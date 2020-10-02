@@ -11,40 +11,94 @@ import {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    content: {
-      position: "relative",
-      margin: "0 auto",
-      padding: "64px 0",
-      maxWidth: 1280,
-      boxSizing: "border-box",
-    },
-    outerContent: {
-      width: "100%",
-      backgroundColor: "white",
-    },
-    tabsBranch: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      maxWidth: 1280,
-      margin: "0 auto",
-    },
-    tab: { position: "relative", bottom: -1 },
-    city: {
-      color: "#4D565F",
-      borderBottom: "1px dashed #4D565F",
-    },
-    switch: { color: "#B3B6BA" },
-    active: { color: "#27AE60" },
-    mapContainer: {
-      paddingTop: 32,
-      paddingBottom: 64,
-      position: "relative",
-      margin: "0 auto",
-      maxWidth: 1280,
-      boxSizing: "border-box",
-      "& > img": {
+    [theme.breakpoints.between("md", "xl")]: {
+      contents: {
+        position: "relative",
+        margin: "0 auto",
+        padding: "64px 48px",
+        maxWidth: 1280,
+        boxSizing: "border-box",
+      },
+      outerContent: {
         width: "100%",
+        backgroundColor: "white",
+      },
+      tabsBranch: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        maxWidth: 1280,
+        margin: "0 auto",
+        boxSizing: "border-box",
+        padding: "0 48px",
+      },
+      tab: { position: "relative", bottom: -1 },
+      city: {
+        color: "#4D565F",
+        borderBottom: "1px dashed #4D565F",
+      },
+      switch: { color: "#B3B6BA" },
+      active: { color: "#27AE60" },
+      mapContainer: {
+        position: "relative",
+        margin: "0 auto",
+        padding: "32px 48px 64px",
+        maxWidth: 1280,
+        boxSizing: "border-box",
+        "& > img": {
+          width: "100%",
+        },
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      contents: {
+        position: "relative",
+        margin: "0 auto",
+        padding: "80px 24px 32px",
+        maxWidth: 1280,
+        boxSizing: "border-box",
+      },
+      outerContent: {
+        width: "100%",
+        backgroundColor: "white",
+      },
+      tabsBranch: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        maxWidth: 1280,
+        margin: "0 auto",
+        boxSizing: "border-box",
+        padding: "0 24px",
+      },
+      tab: { position: "relative", bottom: -1 },
+      city: {
+        color: "#4D565F",
+        borderBottom: "1px dashed #4D565F",
+      },
+      switch: { color: "#B3B6BA" },
+      active: { color: "#27AE60" },
+      mapContainer: {
+        position: "relative",
+        margin: "0 auto",
+        padding: "32px 24px 32px",
+        maxWidth: 1280,
+        boxSizing: "border-box",
+        "& > img": {
+          width: "100%",
+        },
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      tabsBranch: {
+        flexWrap: "wrap-reverse",
+        "& > div:last-child": {
+          width: "100%",
+          order: 1,
+          display: "flex",
+          justifyContent: "space-between",
+          margin: "12px 0",
+        },
       },
     },
   })
@@ -58,7 +112,7 @@ const BranchesPage = () => {
     <div className="main-page">
       <div className="container">
         <div className={classes.outerContent}>
-          <div className={classes.content}>
+          <div className={classes.contents}>
             <BccTypography type="h1" block mb="24px">
               Офисы и банкоматы
             </BccTypography>
@@ -81,10 +135,10 @@ const BranchesPage = () => {
             <BccTab label="Терминалы" />
           </BccTabs>
           <div>
-            <BccTypography type="p2" mr="64px" className={classes.city}>
+            <BccTypography type="p2" mr="12px" className={classes.city}>
               Алматы
             </BccTypography>
-            <BccTypography type="p2" mr="64px" className={classes.switch}>
+            <BccTypography type="p2" className={classes.switch}>
               <span className={!switchBtn ? classes.active : ""}>Списком</span>
               <BccSwitch
                 checked={switchBtn}

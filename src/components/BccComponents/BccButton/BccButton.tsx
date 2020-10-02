@@ -14,12 +14,23 @@ const BccButton = withStyles({
     padding: "0 24px",
     lineHeight: "56px",
     letterSpacing: 0,
+    ["@media (max-width:1060px)"]: {
+      height: 48,
+      lineHeight: "48px",
+      padding: "0 16px",
+    },
     "&.Mui-focusVisible": {
       boxShadow: "none",
     },
     "&.MuiButton-containedPrimary": {
       color: "white",
       backgroundColor: "#27AE60",
+      fontWeight: 500,
+      ["@media (max-width:600px)"]: {
+        height: 48,
+        lineHeight: "48px",
+        padding: "0 16px",
+      },
       "&.Mui-focusVisible": {
         "&::before": {
           content: '" "',

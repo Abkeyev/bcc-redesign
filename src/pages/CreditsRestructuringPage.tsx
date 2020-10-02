@@ -1,5 +1,5 @@
 import React from "react";
-import { Best, News, MobileBanking } from "../components";
+import { Best, News } from "../components";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -12,77 +12,109 @@ import {
   BccTableHead,
   BccTableRow,
   BccTableBody,
+  BccCardFull,
 } from "../components/BccComponents";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    content: {
-      position: "relative",
-      margin: "0 auto 64px",
-      padding: "32px 0 0",
-      maxWidth: 1280,
-      boxSizing: "border-box",
-    },
-    press: {
-      color: "#4D565F",
-      textDecoration: "underline",
-    },
-    alert: {
-      marginBottom: 20,
-    },
-    document: {
-      background: `url(${
-        process.env.PUBLIC_URL + "/img/docBg.svg"
-      }) no-repeat center top 46px`,
-      boxShadow:
-        "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
-      borderRadius: 8,
-      padding: "20px 120px 64px",
-    },
-    date: {
-      color: "#B3B6BA",
-      textAlign: "right",
-    },
-    docTitle: {
-      textAlign: "center",
-    },
-    mailTo: {
-      color: "#1F7042",
-    },
-    docText: {
-      margin: "0 auto",
-      width: "90%",
-    },
-    table: {
-      "& td": {
-        borderColor: "#CCCFD1",
+    [theme.breakpoints.down("xl")]: {
+      contents: {
+        position: "relative",
+        margin: "0 auto 64px",
+        padding: "32px 48px 0",
+        maxWidth: 1280,
+        boxSizing: "border-box",
       },
-      "& th": {
-        borderBottom: "none",
+      press: {
+        color: "#4D565F",
+        textDecoration: "underline",
       },
-      "& th:first-child": {
-        paddingLeft: 0,
+      alert: {
+        marginBottom: 20,
       },
-      "& th:last-child": {
-        paddingRight: 0,
+      subTitle: {
+        marginBottom: 96,
+      },
+      document: {
+        background: `url(${
+          process.env.PUBLIC_URL + "/img/docBg.svg"
+        }) no-repeat center top 46px`,
+        boxShadow:
+          "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
+        borderRadius: 8,
+        padding: "20px 96px 48px",
+      },
+      date: {
+        color: "#B3B6BA",
         textAlign: "right",
       },
-      "& tr > td:first-child": {
-        paddingLeft: 0,
+      docTitle: {
+        textAlign: "center",
       },
-      "& tr > td:last-child": {
-        paddingRight: 0,
-        textAlign: "right",
+      mailTo: {
+        color: "#1F7042",
       },
-      "& tr:last-child > td": {
-        borderBottom: "none",
+      docText: {
+        margin: "0 auto",
+        width: "90%",
+      },
+      table: {
+        "& td": {
+          borderColor: "#CCCFD1",
+        },
+        "& th": {
+          borderBottom: "none",
+        },
+        "& th:first-child": {
+          paddingLeft: 0,
+        },
+        "& th:last-child": {
+          paddingRight: 0,
+          textAlign: "right",
+        },
+        "& tr > td:first-child": {
+          paddingLeft: 0,
+        },
+        "& tr > td:last-child": {
+          paddingRight: 0,
+          textAlign: "right",
+        },
+        "& tr:last-child > td": {
+          borderBottom: "none",
+        },
+      },
+      contacts: {
+        width: "90%",
+        margin: "0 auto",
+        "& > div": {
+          width: "calc(50% - 16px)",
+        },
       },
     },
-    contacts: {
-      width: "90%",
-      margin: "0 auto",
-      "& > div": {
-        width: "calc(50% - 16px)",
+    [theme.breakpoints.down("md")]: {
+      document: {
+        padding: "20px 24px 48px",
+      },
+      subTitle: {
+        marginBottom: 48,
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      contents: {
+        padding: "32px 24px 0",
+      },
+      subTitle: {
+        marginBottom: 24,
+      },
+      docText: {
+        width: "100%",
+      },
+      contacts: {
+        width: "100%",
+        flexWrap: "wrap",
+        "& > div": {
+          width: "100%",
+        },
       },
     },
   })
@@ -93,7 +125,7 @@ const BusinessPage = () => {
   return (
     <div className="main-page">
       <div className="container">
-        <div className={classes.content}>
+        <div className={classes.contents}>
           <Link to="/press-solujba" className={classes.press}>
             <BccTypography block type="p2" mb="46px">
               Пресс-служба
@@ -102,7 +134,7 @@ const BusinessPage = () => {
           <BccTypography block type="h1" mb="12px">
             Отсрочка по выплатам
           </BccTypography>
-          <BccTypography block type="p1" mb="92px">
+          <BccTypography block type="p1" className={classes.subTitle}>
             для заемщиков МСБ сроком на 90 дней
           </BccTypography>
           <BccAlert severity="error" className={classes.alert}>
@@ -184,7 +216,7 @@ const BusinessPage = () => {
                     <BccTableHead>
                       <BccTableRow>
                         <BccTableCell>
-                          <BccTypography type="h6">
+                          <BccTypography weight="bold" type="h6">
                             Для физических лиц
                           </BccTypography>
                         </BccTableCell>
@@ -237,7 +269,7 @@ const BusinessPage = () => {
                     <BccTableHead>
                       <BccTableRow>
                         <BccTableCell>
-                          <BccTypography type="p2">
+                          <BccTypography weight="bold" type="p2">
                             Для юридических лиц
                           </BccTypography>
                         </BccTableCell>
@@ -287,7 +319,29 @@ const BusinessPage = () => {
             </Grid>
           </div>
         </div>
-        <MobileBanking />
+        <BccCardFull
+          chips={[
+            {
+              title: "Мобильный банкинг",
+              type: "outlined",
+              color: "secondary",
+            },
+          ]}
+          title="BCC.KZ"
+          text={
+            <>
+              <BccTypography align="left" block type="p2" mb="32px">
+                Управляй банковскими счетами онлайн через браузер или приложение
+              </BccTypography>
+              <img
+                style={{ marginRight: 20 }}
+                src={process.env.PUBLIC_URL + "/img/as.svg"}
+              />
+              <img src={process.env.PUBLIC_URL + "/img/gp.svg"} />
+            </>
+          }
+          bgImg="/img/mobile-app.svg"
+        />
         <News />
       </div>
     </div>

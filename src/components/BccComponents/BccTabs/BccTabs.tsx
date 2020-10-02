@@ -10,8 +10,9 @@ const BccTabs = withStyles({
     },
     "& .MuiTabs-flexContainer": {
       alignItems: "center",
+      overflowX: "auto",
     },
-    "& button": {
+    "& span a": {
       height: "auto",
       padding: "24px 0",
     },

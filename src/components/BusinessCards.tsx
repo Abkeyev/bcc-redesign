@@ -1,151 +1,226 @@
 import React from "react";
 import { Grid, Select, MenuItem } from "@material-ui/core";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import {
+  makeStyles,
+  createStyles,
+  Theme,
+  useTheme,
+} from "@material-ui/core/styles";
 import { BccTypography, BccChip, BccButton } from "./BccComponents";
 import { Link, useLocation } from "react-router-dom";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    [theme.breakpoints.between("md", "xl")]: {},
-    [theme.breakpoints.down("sm")]: {},
-    [theme.breakpoints.down("xs")]: {},
-    outerContainer: {
-      backgroundColor: "#FFFFFF",
-    },
-    container: {
-      maxWidth: 1280,
-      padding: "64px 0 112px",
-      margin: "0 auto",
-      position: "relative",
-    },
-    cardsText: {
-      "& > div": {
-        width: "calc(50% - 8px)",
+    [theme.breakpoints.down("xl")]: {
+      outerContainer: {
+        backgroundColor: "#FFFFFF",
       },
-    },
-
-    cardsWrap: {
-      width: "100%",
-      overflowX: "hidden",
-    },
-    leftArrow: {
-      position: "relative",
-      height: 40,
-      width: 40,
-      borderRadius: "50%",
-      marginRight: 20,
-      border: "1px solid #4D565F",
-      display: "inline-block",
-      textAlign: "center",
-      lineHeight: "42px",
-      boxSizing: "border-box",
-      cursor: "pointer",
-      "&:hover": {
-        backgroundColor: "#4D565F",
-        "& > svg > path": {
-          stroke: "white",
-        },
-      },
-      "& > svg": {
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        "& > path": {
-          stroke: "#4D565F",
-        },
-      },
-    },
-    rightArrow: {
-      position: "relative",
-      height: 40,
-      width: 40,
-      borderRadius: "50%",
-      border: "1px solid #4D565F",
-      display: "inline-block",
-      textAlign: "center",
-      lineHeight: "42px",
-      boxSizing: "border-box",
-      cursor: "pointer",
-      "&:hover": {
-        backgroundColor: "#4D565F",
-        "& > svg > path": {
-          stroke: "white",
-        },
-      },
-      "& > svg": {
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        "& > path": {
-          stroke: "#4D565F",
-        },
-      },
-    },
-    sliderSteps: {
-      position: "absolute",
-      bottom: 64,
-      width: 62,
-      left: "calc(50% - 31px)",
-      display: "flex",
-      flexWrap: "nowrap",
-      zIndex: 99,
-      justifyContent: "space-between",
-      alignItems: "center",
-      "& > div": {
-        cursor: "pointer",
-        width: 10,
-        marginRight: 16,
-        height: 10,
-        borderRadius: "50%",
+      container: {
+        maxWidth: 1280,
+        padding: "64px 48px 112px",
+        margin: "0 auto",
         boxSizing: "border-box",
+        position: "relative",
+      },
+      cardsText: {
+        "& > div": {
+          width: "calc(50% - 8px)",
+        },
+      },
+
+      cardsWrap: {
+        width: "100%",
+        overflowX: "hidden",
+      },
+      leftArrow: {
+        position: "relative",
+        height: 40,
+        width: 40,
+        borderRadius: "50%",
+        marginRight: 20,
         border: "1px solid #4D565F",
+        display: "inline-block",
+        textAlign: "center",
+        lineHeight: "42px",
+        boxSizing: "border-box",
+        cursor: "pointer",
         "&:hover": {
           backgroundColor: "#4D565F",
+          "& > svg > path": {
+            stroke: "white",
+          },
         },
-      },
-      "& > div:last-child": {
-        marginRight: 0,
-      },
-    },
-    active: {
-      backgroundColor: "#4D565F",
-    },
-    cards: {
-      width: "calc(1280px * 3)",
-      transition: "all .7s ease",
-      "& > div": {
-        width: 1280,
-      },
-    },
-    card: {
-      padding: "30px 90px",
-      backgroundColor: "#FFFFFF",
-      border: "1px solid #CCCFD1",
-      borderRadius: 8,
-      "& > div": {
-        "& > img": {
-          width: "95%",
-          [theme.breakpoints.down("md")]: {
-            marginBottom: 10,
+        "& > svg": {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          "& > path": {
+            stroke: "#4D565F",
           },
         },
       },
-    },
-    cardsTable: {
-      width: "80%",
-      marginBottom: 30,
-      "& > div": {
-        width: "calc(33% - 20px)",
+      rightArrow: {
+        position: "relative",
+        height: 40,
+        width: 40,
+        borderRadius: "50%",
+        border: "1px solid #4D565F",
+        display: "inline-block",
+        textAlign: "center",
+        lineHeight: "42px",
+        boxSizing: "border-box",
+        cursor: "pointer",
+        "&:hover": {
+          backgroundColor: "#4D565F",
+          "& > svg > path": {
+            stroke: "white",
+          },
+        },
+        "& > svg": {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          "& > path": {
+            stroke: "#4D565F",
+          },
+        },
+      },
+      sliderSteps: {
+        position: "absolute",
+        bottom: 64,
+        width: 62,
+        left: "calc(50% - 31px)",
+        display: "flex",
+        flexWrap: "nowrap",
+        zIndex: 99,
+        justifyContent: "space-between",
+        alignItems: "center",
+        "& > div": {
+          cursor: "pointer",
+          width: 10,
+          marginRight: 16,
+          height: 10,
+          borderRadius: "50%",
+          boxSizing: "border-box",
+          border: "1px solid #4D565F",
+          "&:hover": {
+            backgroundColor: "#4D565F",
+          },
+        },
+        "& > div:last-child": {
+          marginRight: 0,
+        },
+      },
+      active: {
+        backgroundColor: "#4D565F",
+      },
+      cards: {
+        width: "calc(1184px * 3)",
+        transition: "all .7s ease",
+        "& > div": {
+          width: 1184,
+        },
+      },
+      card: {
+        padding: "30px 60px",
+        backgroundColor: "#FFFFFF",
+        border: "1px solid #CCCFD1",
+        borderRadius: 8,
+        "& > div:first-child": {
+          width: "30%",
+          "& > img": {
+            width: "95%",
+            [theme.breakpoints.down("md")]: {
+              marginBottom: 10,
+            },
+          },
+        },
+        "& > div:nth-child(2)": {
+          width: "70%",
+        },
+      },
+      cardsTable: {
+        width: "80%",
+        marginBottom: 30,
+        "& > div": {
+          width: "calc(33% - 20px)",
+        },
+      },
+      orderBtn: {
+        marginRight: 16,
+        minWidth: 280,
+      },
+      usefulHead: {
+        marginBottom: 32,
       },
     },
-    orderBtn: {
-      marginRight: 16,
-      minWidth: 280,
+    [theme.breakpoints.down("md")]: {
+      cards: {
+        width: "calc((100vw - 96px) * 3)",
+        transition: "all .7s ease",
+        "& > div": {
+          width: "calc(100vw - 96px)",
+        },
+      },
+      card: {
+        padding: 24,
+      },
+      orderBtn: {
+        marginRight: 16,
+        minWidth: 200,
+      },
     },
-    usefulHead: {
-      marginBottom: 32,
+    [theme.breakpoints.down("sm")]: {
+      cardsTable: {
+        display: "none",
+      },
+      orderBtn: {
+        minWidth: 100,
+      },
+      card: {
+        "& > div:first-child": {
+          width: "25%",
+        },
+        "& > div:nth-child(2)": {
+          width: "75%",
+        },
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      container: {
+        paddingLeft: 24,
+        paddingRight: 24,
+      },
+      cards: {
+        width: "calc((100vw - 48px) * 3)",
+        transition: "all .7s ease",
+        "& > div": {
+          width: "calc(100vw - 48px)",
+        },
+      },
+      cardsTable: {
+        display: "flex",
+      },
+      orderBtn: {
+        minWidth: "auto",
+        width: "100%",
+        marginBottom: 12,
+      },
+      card: {
+        "& > div:first-child": {
+          width: "100%",
+          textAlign: "center",
+          "& > img": {
+            width: "80%",
+          },
+        },
+        "& > div:nth-child(2)": {
+          width: "100%",
+        },
+      },
     },
   })
 );
@@ -154,6 +229,11 @@ const BusinessCards = (props: any) => {
   const location = useLocation();
   const classes = useStyles({});
   const [slide, setSlide] = React.useState(0);
+  const theme = useTheme();
+  const lg = useMediaQuery(theme.breakpoints.up("lg"));
+  const md = useMediaQuery(theme.breakpoints.up("md"));
+  const small = useMediaQuery(theme.breakpoints.down("sm"));
+  const vSmall = useMediaQuery(theme.breakpoints.down("xs"));
 
   const steps = [
     {
@@ -188,6 +268,14 @@ const BusinessCards = (props: any) => {
         setSlide(slide - 1);
       }
     }
+  };
+
+  const marginLeft = () => {
+    if (vSmall) return `calc((100vw - 48px) * ${slide * -1})`;
+    else if (small) return `calc((100vw - 96px) * ${slide * -1})`;
+    else if (md) return `calc((100vw - 96px) * ${slide * -1})`;
+    else if (lg) return `-${1184 * slide}px`;
+    else return 0;
   };
 
   return (
@@ -264,7 +352,7 @@ const BusinessCards = (props: any) => {
             justify="space-between"
             wrap="nowrap"
             className={classes.cards}
-            style={{ marginLeft: `-${1280 * slide}px` }}
+            style={{ marginLeft: marginLeft() }}
           >
             <Grid item>
               <Grid
@@ -273,13 +361,13 @@ const BusinessCards = (props: any) => {
                 justify="space-between"
                 className={classes.card}
               >
-                <Grid item xl={4} lg={4} md={4} sm={4} xs={12}>
+                <Grid item>
                   <img
                     src={process.env.PUBLIC_URL + "/img/iron-big.png"}
                     alt="ironcard"
                   />
                 </Grid>
-                <Grid item xl={8} lg={8} md={8} sm={8} xs={12}>
+                <Grid item>
                   <BccChip type="outlined" color="secondary" mb="16px">
                     Премиум
                   </BccChip>
@@ -332,6 +420,7 @@ const BusinessCards = (props: any) => {
                     color="secondary"
                     id="orderIron"
                     className={classes.orderBtn}
+                    style={{ marginRight: 0 }}
                   >
                     Подробнее о карте
                   </BccButton>
@@ -346,13 +435,13 @@ const BusinessCards = (props: any) => {
                 justify="space-between"
                 className={classes.card}
               >
-                <Grid item xl={4} lg={4} md={4} sm={4} xs={12}>
+                <Grid item>
                   <img
                     src={process.env.PUBLIC_URL + "/img/iron-big.png"}
                     alt="ironcard"
                   />
                 </Grid>
-                <Grid item xl={8} lg={8} md={8} sm={8} xs={12}>
+                <Grid item>
                   <BccChip type="outlined" color="secondary" mb="16px">
                     Премиум
                   </BccChip>
@@ -405,6 +494,7 @@ const BusinessCards = (props: any) => {
                     color="secondary"
                     id="orderIron"
                     className={classes.orderBtn}
+                    style={{ marginRight: 0 }}
                   >
                     Подробнее о карте
                   </BccButton>
@@ -418,13 +508,13 @@ const BusinessCards = (props: any) => {
                 justify="space-between"
                 className={classes.card}
               >
-                <Grid item xl={4} lg={4} md={4} sm={4} xs={12}>
+                <Grid item>
                   <img
                     src={process.env.PUBLIC_URL + "/img/iron-big.png"}
                     alt="ironcard"
                   />
                 </Grid>
-                <Grid item xl={8} lg={8} md={8} sm={8} xs={12}>
+                <Grid item>
                   <BccChip type="outlined" color="secondary" mb="16px">
                     Премиум
                   </BccChip>
@@ -477,6 +567,7 @@ const BusinessCards = (props: any) => {
                     color="secondary"
                     id="orderIron"
                     className={classes.orderBtn}
+                    style={{ marginRight: 0 }}
                   >
                     Подробнее о карте
                   </BccButton>

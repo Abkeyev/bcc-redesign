@@ -14,88 +14,212 @@ import { Link, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    [theme.breakpoints.between("md", "xl")]: {},
-    [theme.breakpoints.down("sm")]: {},
-    [theme.breakpoints.down("xs")]: {},
-    outerContainer: {
-      backgroundColor: "#FAFAFA",
-    },
-    container: {
-      maxWidth: 1280,
-      padding: "0 0 48px",
-      margin: "0 auto",
-    },
-    calc: {
-      padding: 20,
-      backgroundColor: "#FFFFFF",
-      borderRadius: 8,
-    },
-    chip: {
-      marginBottom: 20,
-      "& > div": {
-        marginRight: 8,
-      },
-      "& > div:last-child": {
-        marginRight: 0,
-      },
-    },
-    calcTitle: {
-      marginBottom: 20,
-    },
-    paymentWrap: {
-      position: "relative",
-      marginBottom: 40,
-    },
-    sliderWrap: {
-      position: "relative",
-      width: "100%",
-    },
-    sliderRange: {
-      position: "absolute",
-      left: 0,
-      right: 0,
-      bottom: -20,
-      color: "#b3b6ba",
-      display: "flex",
-      justifyContent: "space-between",
-      fontSize: 12,
-    },
-    calcContent: {
-      "& > div:first-child": {
-        width: "calc(65% - 12px)",
-      },
-      "& > div:last-child": {
-        width: "calc(35% - 12px)",
+    [theme.breakpoints.between("lg", "xl")]: {
+      outerContainer: {
         backgroundColor: "#FAFAFA",
+      },
+      container: {
+        maxWidth: 1280,
+        padding: "48px",
+        boxSizing: "border-box",
+        margin: "0 auto",
+      },
+      calc: {
         padding: 20,
+        backgroundColor: "#FFFFFF",
         borderRadius: 8,
       },
-    },
-    input: {
-      display: "block",
-      width: "100%",
-      "& > div": {
-        width: "inherit",
+      chip: {
+        marginBottom: 20,
+        "& > div": {
+          marginRight: 8,
+        },
+        "& > div:last-child": {
+          marginRight: 0,
+        },
+      },
+      calcTitle: {
+        marginBottom: 20,
+      },
+      paymentWrap: {
+        position: "relative",
+        marginBottom: 40,
+      },
+      sliderWrap: {
+        position: "relative",
+        width: "100%",
+      },
+      sliderRange: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: -20,
+        color: "#b3b6ba",
+        display: "flex",
+        justifyContent: "space-between",
+        fontSize: 12,
+      },
+      calcContent: {
+        "& > div:first-child": {
+          width: "calc(65% - 12px)",
+        },
+        "& > div:last-child": {
+          width: "calc(35% - 12px)",
+          backgroundColor: "#FAFAFA",
+          padding: 20,
+          borderRadius: 8,
+        },
+      },
+      input: {
+        display: "block",
+        width: "100%",
+        "& > div": {
+          width: "inherit",
+        },
+      },
+      calcTitleCount: {
+        marginBottom: 12,
+      },
+      cardsText: {
+        marginBottom: 20,
+        "& > div:first-child": {
+          width: "calc(60% - 8px)",
+        },
+        "& > div:last-child": {
+          width: "calc(40% - 8px)",
+        },
+      },
+      calcBtn: {
+        marginBottom: 12,
+      },
+      checkboxText: {
+        "& > div": {
+          marginRight: 20,
+        },
       },
     },
-    calcTitleCount: {
-      marginBottom: 12,
-    },
-    cardsText: {
-      marginBottom: 20,
-      "& > div:first-child": {
-        width: "calc(60% - 8px)",
+    [theme.breakpoints.down("md")]: {
+      outerContainer: {
+        backgroundColor: "#FAFAFA",
       },
-      "& > div:last-child": {
-        width: "calc(40% - 8px)",
+      container: {
+        maxWidth: 1280,
+        padding: "0 48px 48px",
+        boxSizing: "border-box",
+        margin: "0 auto",
+      },
+      calc: {
+        padding: 20,
+        backgroundColor: "#FFFFFF",
+        borderRadius: 8,
+      },
+      chip: {
+        marginBottom: 20,
+        width: "maxContent",
+        overflow: "scroll",
+        flexWrap: "nowrap",
+        display: "flex",
+        "& > div": {
+          marginRight: 8,
+        },
+        "& > div:last-child": {
+          marginRight: 0,
+        },
+      },
+      calcTitle: {
+        marginBottom: 20,
+      },
+      paymentWrap: {
+        position: "relative",
+        marginBottom: 40,
+      },
+      sliderWrap: {
+        position: "relative",
+        width: "100%",
+      },
+      sliderRange: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: -20,
+        color: "#b3b6ba",
+        display: "flex",
+        justifyContent: "space-between",
+        fontSize: 12,
+      },
+      calcContent: {
+        "& > div:first-child": {
+          width: "calc(65% - 12px)",
+        },
+        "& > div:last-child": {
+          width: "calc(35% - 12px)",
+          backgroundColor: "#FAFAFA",
+          padding: 20,
+          borderRadius: 8,
+        },
+      },
+      input: {
+        display: "block",
+        width: "100%",
+        "& > div": {
+          width: "inherit",
+        },
+      },
+      calcTitleCount: {
+        marginBottom: 12,
+      },
+      cardsText: {
+        marginBottom: 20,
+        "& > div:first-child": {
+          width: "calc(60% - 8px)",
+        },
+        "& > div:last-child": {
+          width: "calc(40% - 8px)",
+        },
+      },
+      calcBtn: {
+        marginBottom: 12,
+      },
+      checkboxText: {
+        "& > div": {
+          marginRight: 20,
+        },
       },
     },
-    calcBtn: {
-      marginBottom: 12,
+    [theme.breakpoints.down("sm")]: {
+      container: {
+        maxWidth: 1280,
+        padding: "0 24px 24px",
+      },
+      calcContent: {
+        "& > div:first-child": {
+          width: "50%",
+          marginBottom: 12,
+        },
+        "& > div:last-child": {
+          width: "50%",
+          marginBottom: 12,
+        },
+      },
     },
-    checkboxText: {
-      "& > div": {
-        marginRight: 20,
+    [theme.breakpoints.down("xs")]: {
+      container: {
+        padding: "24px",
+      },
+      calcBtn: {
+        "& > span": {
+          lineHeight: "normal",
+        },
+      },
+      calcContent: {
+        flexWrap: "wrap",
+        "& > div:first-child": {
+          width: "100%",
+        },
+        "& > div:last-child": {
+          width: "100%",
+          marginBottom: 12,
+        },
       },
     },
   })

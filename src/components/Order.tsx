@@ -13,68 +13,153 @@ import MaskedInput from "react-maskedinput";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    outerContainer: {
-      background: "#fafafa",
+    [theme.breakpoints.between("md", "xl")]: {
+      outerContainer: {
+        background: "#fafafa",
+      },
+      innerOrderForm: {},
+      container: {
+        maxWidth: 1280,
+        margin: "0 auto",
+        boxSizing: "border-box",
+        padding: "48px 48px",
+      },
+      orderNum: {
+        color: "#249052",
+        paddingRight: 10,
+        borderRight: ".5px solid rgba(20, 20, 20, .7)",
+      },
+      orderNumTitle: {
+        paddingLeft: 10,
+        color: "#141414",
+      },
+      orderNumText: {
+        marginTop: 20,
+        opacity: 0.7,
+      },
+      item: {
+        width: "calc(33% - 20px)",
+      },
+      orderForm: {
+        background: "#FFFFFF",
+        boxShadow:
+          "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
+        borderRadius: 8,
+        width: "60%",
+        padding: 46,
+        boxSizing: "border-box",
+        maxWidth: "60%",
+        margin: "0 auto",
+        textAlign: "center",
+      },
+      titleForm: {
+        marginBottom: 16,
+      },
+      subTitleForm: {
+        marginBottom: 46,
+        opacity: 0.7,
+      },
+      inputStyle: {
+        marginBottom: 48,
+        textAlign: "left",
+      },
+      checkboxText: {
+        alignItems: "center",
+        marginBottom: 48,
+      },
+      btnWrap: {
+        width: "calc(50% - 10px)",
+        "& > button": { width: "100%" },
+      },
+      icon: {
+        width: "18px",
+        height: "19px",
+      },
+      garant: { textAlign: "left" },
     },
-    innerOrderForm: {},
-    container: {
-      maxWidth: 1280,
-      margin: "0 auto",
-      boxSizing: "border-box",
-      padding: "48px 0",
+    [theme.breakpoints.down("sm")]: {
+      outerContainer: {
+        background: "#fafafa",
+      },
+      innerOrderForm: {},
+      container: {
+        maxWidth: 1280,
+        margin: "0 auto",
+        boxSizing: "border-box",
+        padding: "24px",
+      },
+      orderNum: {
+        color: "#249052",
+        paddingRight: 10,
+        borderRight: ".5px solid rgba(20, 20, 20, .7)",
+      },
+      orderNumTitle: {
+        paddingLeft: 10,
+        color: "#141414",
+      },
+      orderNumText: {
+        marginTop: 20,
+        opacity: 0.7,
+      },
+      item: {
+        width: "calc(33% - 20px)",
+      },
+      orderForm: {
+        background: "#FFFFFF",
+        boxShadow:
+          "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
+        borderRadius: 8,
+        width: "90%",
+        padding: 48,
+        boxSizing: "border-box",
+        maxWidth: "90%",
+        margin: "0 auto",
+        textAlign: "center",
+      },
+      titleForm: {
+        marginBottom: 16,
+      },
+      subTitleForm: {
+        marginBottom: 46,
+        opacity: 0.7,
+      },
+      inputStyle: {
+        marginBottom: 48,
+        textAlign: "left",
+      },
+      checkboxText: {
+        alignItems: "center",
+        marginBottom: 48,
+      },
+      btnWrap: {
+        width: "calc(50% - 10px)",
+        "& > button": { width: "100%" },
+      },
+      icon: {
+        width: "18px",
+        height: "19px",
+      },
+      garant: { textAlign: "left" },
     },
-    orderNum: {
-      color: "#249052",
-      paddingRight: 10,
-      borderRight: ".5px solid rgba(20, 20, 20, .7)",
+    [theme.breakpoints.down("xs")]: {
+      orderForm: {
+        width: "100%",
+        maxWidth: "100%",
+        padding: 24,
+      },
+      checkboxText: {
+        textAlign: "left",
+        marginBottom: 12,
+      },
+      inputStyle: {
+        marginBottom: 24,
+      },
+      btnWrap: {
+        width: "100%",
+        marginBottom: 12,
+        "& > button": { width: "100%" },
+      },
     },
-    orderNumTitle: {
-      paddingLeft: 10,
-      color: "#141414",
-    },
-    orderNumText: {
-      marginTop: 20,
-      opacity: 0.7,
-    },
-    item: {
-      width: "calc(33% - 20px)",
-    },
-    orderForm: {
-      background: "#FFFFFF",
-      boxShadow:
-        "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
-      borderRadius: 8,
-      width: "60%",
-      padding: 46,
-      boxSizing: "border-box",
-      maxWidth: "60%",
-      margin: "0 auto",
-      textAlign: "center",
-    },
-    titleForm: {
-      marginBottom: 16,
-    },
-    subTitleForm: {
-      marginBottom: 46,
-      opacity: 0.7,
-    },
-    inputStyle: {
-      marginBottom: 48,
-      textAlign: "left",
-    },
-    checkboxText: {
-      alignItems: "center",
-      marginBottom: 48,
-    },
-    btnWrap: {
-      width: "calc(50% - 10px)",
-      "& > button": { width: "100%" },
-    },
-    icon: {
-      width: "18px",
-      height: "19px",
-    },
-    garant: { textAlign: "left" },
   })
 );
 

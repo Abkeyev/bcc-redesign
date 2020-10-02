@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
       lineHeight: "12px",
       padding: "8px 12px",
       borderRadius: 30,
+      whiteSpace: "nowrap",
     },
     block: {
       display: "block",

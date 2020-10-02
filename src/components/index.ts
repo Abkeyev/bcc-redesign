@@ -1,7 +1,6 @@
 // common
 export { default as Navigation } from "./Navigation";
 export { default as Slider } from "./Slider";
-export { default as MobileBanking } from "./MobileBanking";
 export { default as News } from "./News";
 export { default as Order } from "./Order";
 export { default as Footer } from "./Footer";
@@ -16,11 +15,7 @@ export { default as Popular } from "./Popular";
 // credit
 export { default as Crediting } from "./Crediting";
 export { default as Tabs } from "./Tabs";
-export { default as Refinancing } from "./Refinancing";
 export { default as Calculator } from "./Calculator";
 export { default as Benefits } from "./Benefits";
-export { default as BaspanaBenefits } from "./BaspanaBenefits";
 export { default as BaspanaCalculator } from "./BaspanaCalculator";
-export { default as CarCreditBenefits } from "./CarCreditBenefits";
 export { default as CarCreditCalculator } from "./CarCreditCalculator";
-export { default as Offer } from "./Offer";

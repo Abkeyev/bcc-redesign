@@ -6,21 +6,54 @@ import { Link, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    [theme.breakpoints.between("md", "xl")]: {},
+    [theme.breakpoints.between("lg", "xl")]: {
+      outerContainer: {
+        backgroundColor: "#FAFAFA",
+      },
+      container: {
+        maxWidth: 1280,
+        padding: "48px 48px 0",
+        boxSizing: "border-box",
+        margin: "0 auto",
+      },
+      cards: {
+        marginBottom: 24,
+        "& > div": {
+          width: "calc(33% - 16px)",
+        },
+      },
+    },
+    [theme.breakpoints.down("md")]: {
+      outerContainer: {
+        backgroundColor: "#FAFAFA",
+      },
+      container: {
+        maxWidth: 1280,
+        padding: "48px 48px",
+        boxSizing: "border-box",
+        margin: "0 auto",
+      },
+      cards: {
+        flexWrap: "wrap",
+        marginBottom: 24,
+        "& > div": {
+          width: "calc(50% - 16px)",
+          marginBottom: 12,
+        },
+      },
+    },
     [theme.breakpoints.down("sm")]: {},
-    [theme.breakpoints.down("xs")]: {},
-    outerContainer: {
-      backgroundColor: "#FAFAFA",
-    },
-    container: {
-      maxWidth: 1280,
-      padding: "48px 0",
-      margin: "0 auto",
-    },
-    cards: {
-      marginBottom: 24,
-      "& > div": {
-        width: "calc(33% - 16px)",
+    [theme.breakpoints.down("xs")]: {
+      cards: {
+        flexWrap: "wrap",
+        marginBottom: 24,
+        "& > div": {
+          width: "100%",
+          marginBottom: 12,
+        },
+      },
+      container: {
+        padding: 24,
       },
     },
   })
@@ -53,6 +86,11 @@ const Crediting = (props: any) => {
                   title: "Кредит",
                   type: "outlined",
                   color: "secondary",
+                },
+                {
+                  title: "BCC.KZ",
+                  type: "filled",
+                  color: "primary",
                 },
               ]}
               text={

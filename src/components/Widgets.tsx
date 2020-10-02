@@ -14,110 +14,177 @@ import { Link, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    [theme.breakpoints.between("md", "xl")]: {},
-    [theme.breakpoints.down("sm")]: {},
-    [theme.breakpoints.down("xs")]: {},
-    outerContainer: {
-      backgroundColor: "#FAFAFA",
-    },
-    container: {
-      maxWidth: 1280,
-      padding: "48px 0",
-      margin: "0 auto",
-    },
-    calc: {
-      padding: 20,
-      backgroundColor: "#FFFFFF",
-      borderRadius: 8,
-    },
-    chip: {
-      marginBottom: 20,
-      "& > div": {
-        marginRight: 8,
-      },
-      "& > div:last-child": {
-        marginRight: 0,
-      },
-    },
-    currencyBlock: {
-      "& > span": {
-        marginBottom: 16,
-        color: "#141414",
-      },
-      "& > span:fist-child": {
-        color: "#80868C",
-      },
-    },
-    widgetContainer: {
-      "& > div:first-child": {
-        width: "calc(65% - 12px)",
-      },
-      "& > div:last-child": {
-        width: "calc(35% - 12px)",
-      },
-    },
-    calcTitle: {
-      marginBottom: 20,
-    },
-    paymentWrap: {
-      position: "relative",
-      marginBottom: 40,
-    },
-    sliderWrap: {
-      position: "relative",
-      width: "100%",
-    },
-    sliderRange: {
-      position: "absolute",
-      left: 0,
-      right: 0,
-      bottom: -20,
-      color: "#b3b6ba",
-      display: "flex",
-      justifyContent: "space-between",
-      fontSize: 12,
-    },
-    calcContent: {
-      "& > div:first-child": {
-        width: "calc(60% - 12px)",
-      },
-      "& > div:last-child": {
-        width: "calc(40% - 12px)",
+    [theme.breakpoints.down("xl")]: {
+      outerContainer: {
         backgroundColor: "#FAFAFA",
+      },
+      container: {
+        maxWidth: 1280,
+        padding: "48px",
+        boxSizing: "border-box",
+        margin: "0 auto",
+      },
+      calc: {
         padding: 20,
+        backgroundColor: "#FFFFFF",
         borderRadius: 8,
       },
-    },
-    input: {
-      display: "block",
-      width: "100%",
-      "& > div": {
-        width: "inherit",
+      chip: {
+        marginBottom: 20,
+        "& > div": {
+          marginRight: 8,
+        },
+        "& > div:last-child": {
+          marginRight: 0,
+        },
       },
-    },
-    calcTitleCount: {
-      marginBottom: 12,
-    },
-    cardsText: {
-      marginBottom: 20,
-      "& > div:first-child": {
-        width: "calc(60% - 8px)",
+      currencyBlock: {
+        "& > span": {
+          marginBottom: 16,
+          color: "#141414",
+        },
+        "& > span:fist-child": {
+          color: "#80868C",
+        },
       },
-      "& > div:last-child": {
-        width: "calc(40% - 8px)",
+      widgetContainer: {
+        "& > div:first-child": {
+          width: "calc(65% - 12px)",
+        },
+        "& > div:last-child": {
+          width: "calc(35% - 12px)",
+        },
       },
-    },
-    calcBtn: {
-      marginBottom: 12,
-    },
-    currency: {
-      "& > span:first-child": {
+      calcTitle: {
+        marginBottom: 20,
+      },
+      paymentWrap: {
+        position: "relative",
         marginBottom: 40,
       },
+      sliderWrap: {
+        position: "relative",
+        width: "100%",
+      },
+      sliderRange: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: -20,
+        color: "#b3b6ba",
+        display: "flex",
+        justifyContent: "space-between",
+        fontSize: 12,
+      },
+      calcContent: {
+        "& > div:first-child": {
+          width: "calc(60% - 12px)",
+        },
+        "& > div:last-child": {
+          width: "calc(40% - 12px)",
+          backgroundColor: "#FAFAFA",
+          padding: 20,
+          borderRadius: 8,
+        },
+      },
+      input: {
+        display: "block",
+        width: "100%",
+        "& > div": {
+          width: "inherit",
+        },
+      },
+      calcTitleCount: {
+        marginBottom: 12,
+      },
+      cardsText: {
+        marginBottom: 20,
+        "& > div:first-child": {
+          width: "calc(60% - 8px)",
+        },
+        "& > div:last-child": {
+          width: "calc(40% - 8px)",
+        },
+      },
+      calcBtn: {
+        marginBottom: 12,
+      },
+      currency: {
+        "& > span:first-child": {
+          marginBottom: 40,
+        },
+      },
+      checkboxText: {
+        "& > div": {
+          marginRight: 20,
+        },
+      },
     },
-    checkboxText: {
-      "& > div": {
-        marginRight: 20,
+    [theme.breakpoints.down("md")]: {
+      calcContent: {
+        "& > div:first-child": {
+          width: "calc(50% - 8px)",
+        },
+        "& > div:last-child": {
+          width: "calc(50% - 8px)",
+          backgroundColor: "#FAFAFA",
+          padding: 16,
+          borderRadius: 8,
+        },
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      container: {
+        padding: "0 48px 32px",
+      },
+      widgetContainer: {
+        flexWrap: "wrap",
+        "& > div:first-child": {
+          width: "100%",
+          marginBottom: 16,
+        },
+        "& > div:last-child": {
+          width: "100%",
+        },
+      },
+      chip: {
+        display: "flex",
+        flexWrap: "nowrap",
+        overflow: "scroll",
+        width: "max-content",
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      container: {
+        paddingLeft: 24,
+        paddingRight: 24,
+      },
+      calc: {
+        "& > div:nth-child(2)": {
+          width: "inherit",
+          overflowX: "scroll",
+          marginBottom: 16,
+        },
+      },
+      chip: {
+        width: "max-content",
+        marginBottom: 0,
+        overflowX: "auto",
+        overflowY: "auto",
+        "& > span": {
+          marginBottom: "6px!important",
+          marginRight: "6px!important",
+        },
+      },
+      calcContent: {
+        flexWrap: "wrap",
+        "& > div:first-child": {
+          width: "100%",
+        },
+        "& > div:last-child": {
+          width: "100%",
+          marginBottom: 16,
+        },
       },
     },
   })
@@ -133,16 +200,18 @@ const Calulator = (props: any) => {
       <BccTypography type="h4" block className={classes.calcTitle}>
         Кредитный калькулятор
       </BccTypography>
-      <div className={classes.chip}>
-        <BccChip type="filled" color="secondary" mr="12px">
-          Кредит наличными
-        </BccChip>
-        <BccChip type="outlined" color="secondary" mr="12px">
-          Залоговый кредит
-        </BccChip>
-        <BccChip type="outlined" color="secondary">
-          Рефинансирование кредита
-        </BccChip>
+      <div>
+        <div className={classes.chip}>
+          <BccChip type="filled" color="secondary" mr="12px">
+            Кредит наличными
+          </BccChip>
+          <BccChip type="outlined" color="secondary" mr="12px">
+            Залоговый кредит
+          </BccChip>
+          <BccChip type="outlined" color="secondary">
+            Рефинансирование кредита
+          </BccChip>
+        </div>
       </div>
       <Grid
         container

@@ -1,5 +1,5 @@
 import React from "react";
-import { Best, News, MobileBanking } from "../components";
+import { Best, News } from "../components";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -16,51 +16,109 @@ import {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    content: {
-      position: "relative",
-      margin: "0 auto 64px",
-      padding: "96px 0",
-      maxWidth: 1280,
-      boxSizing: "border-box",
-    },
-    horizontalTab: {
-      "& > div:first-child": {
-        width: "calc(30% - 28px)",
-        "& > div > div": {
-          cursor: "pointer",
-          borderRadius: 8,
-          padding: 30,
-          marginBottom: 30,
-          transition: "all .5s ease",
+    [theme.breakpoints.between("md", "xl")]: {
+      contents: {
+        position: "relative",
+        margin: "0 auto 64px",
+        padding: "48px",
+        maxWidth: 1280,
+        boxSizing: "border-box",
+      },
+      horizontalTab: {
+        "& > div:first-child": {
+          width: "calc(30% - 28px)",
+          "& > div > div": {
+            cursor: "pointer",
+            borderRadius: 8,
+            padding: 30,
+            marginBottom: 30,
+            transition: "all .5s ease",
+          },
+          "& > div > div.active": {
+            backgroundColor: "white",
+            boxShadow:
+              "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
+          },
         },
-        "& > div > div.active": {
-          backgroundColor: "white",
+        "& > div:last-child": {
+          width: "calc(70% - 28px)",
           boxShadow:
             "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
+          borderRadius: 8,
+          backgroundColor: "white",
+          padding: 30,
         },
       },
-      "& > div:last-child": {
-        width: "calc(70% - 28px)",
-        boxShadow:
-          "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
-        borderRadius: 8,
-        backgroundColor: "white",
-        padding: 30,
+      table: {
+        color: "#80868C",
+        "& tr > td:first-child": {
+          paddingLeft: 0,
+        },
+        "& tr > td:last-child": {
+          paddingRight: 0,
+          textAlign: "right",
+        },
+        "& tr:last-child > td": {
+          borderBottom: "none",
+        },
       },
     },
-    table: {
-      color: "#80868C",
-      "& tr > td:first-child": {
-        paddingLeft: 0,
+    [theme.breakpoints.down("sm")]: {
+      contents: {
+        position: "relative",
+        margin: "0 auto",
+        padding: "24px 24px 48px",
+        paddingTop: 96,
+        maxWidth: 1280,
+        boxSizing: "border-box",
       },
-      "& tr > td:last-child": {
-        paddingRight: 0,
-        textAlign: "right",
+      horizontalTab: {
+        flexWrap: "wrap",
+        "& > div:first-child": {
+          width: "100%",
+          "& > div": {
+            flexDirection: "row",
+            flexWrap: "nowrap",
+            overflowX: "scroll",
+          },
+          "& > div > div": {
+            cursor: "pointer",
+            whiteSpace: "nowrap",
+            borderRadius: 8,
+            padding: 30,
+            marginBottom: 30,
+            transition: "all .5s ease",
+          },
+          "& > div > div.active": {
+            backgroundColor: "white",
+            boxShadow:
+              "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
+          },
+        },
+        "& > div:last-child": {
+          width: "100%",
+          boxShadow:
+            "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
+          borderRadius: 8,
+          backgroundColor: "white",
+          padding: 30,
+        },
       },
-      "& tr:last-child > td": {
-        borderBottom: "none",
+      table: {
+        color: "#80868C",
+        "& tr > td:first-child": {
+          paddingLeft: 0,
+        },
+        "& tr > td:last-child": {
+          paddingRight: 0,
+          textAlign: "right",
+        },
+        "& tr:last-child > td": {
+          borderBottom: "none",
+        },
       },
     },
+    [theme.breakpoints.down("xs")]: {},
   })
 );
 
@@ -78,7 +136,7 @@ const CallCenterPage = () => {
   return (
     <div className="main-page">
       <div className="container">
-        <div className={classes.content}>
+        <div className={classes.contents}>
           <BccTypography block type="h1" mb="46px">
             Центр обслуживания вызовов
           </BccTypography>

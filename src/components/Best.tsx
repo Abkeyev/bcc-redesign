@@ -6,51 +6,78 @@ import { Link, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    [theme.breakpoints.between("md", "xl")]: {},
-    [theme.breakpoints.down("sm")]: {},
-    [theme.breakpoints.down("xs")]: {},
-    outerContainer: {
-      backgroundColor: "#FAFAFA",
-    },
-    container: {
-      maxWidth: 1280,
-      padding: "48px 0",
-      margin: "0 auto",
-    },
-    title: {
-      marginRight: 24,
-    },
-    cardsText: {
-      "& > div": {
-        width: "calc(50% - 8px)",
+    [theme.breakpoints.down("xl")]: {
+      outerContainer: {
+        backgroundColor: "#FAFAFA",
       },
-    },
-    cardsTitle: {
-      marginBottom: 32,
-    },
-    cards: {
-      marginBottom: 24,
-      "& > div": {
+      container: {
+        maxWidth: 1280,
+        padding: "48px",
+        boxSizing: "border-box",
+        margin: "0 auto",
+      },
+      title: {
+        marginRight: 24,
+      },
+      cardsText: {
+        "& > div": {
+          width: "calc(50% - 8px)",
+        },
+      },
+      cardsTitle: {
+        marginBottom: 32,
+      },
+      cards: {
         marginBottom: 24,
-        width: "calc(33% - 12px)",
+        "& > div": {
+          marginBottom: 24,
+          width: "calc(33% - 12px)",
+        },
+      },
+      cardsSecond: {
+        "& > div": {
+          width: "calc(50% - 12px)",
+        },
+      },
+      titleChip: {
+        "& > div": {
+          marginRight: 16,
+        },
+        "& > span:last-child": {
+          marginRight: 0,
+        },
+      },
+      link: {
+        color: "#27AE60",
+        textDecoration: "none",
       },
     },
-    cardsSecond: {
-      "& > div": {
-        width: "calc(50% - 12px)",
+    [theme.breakpoints.down("sm")]: {
+      cards: {
+        "& > div": {
+          width: "calc(50% - 12px)",
+        },
+      },
+      titleChip: {
+        marginTop: 12,
+        display: "flex",
+        flexWrap: "nowrap",
+        overflow: "scroll",
+        width: "max-content",
+        "& > span": {
+          whiteSpace: "nowrap",
+        },
       },
     },
-    titleChip: {
-      "& > div": {
-        marginRight: 16,
+    [theme.breakpoints.down("xs")]: {
+      container: {
+        padding: 24,
       },
-      "& > span:last-child": {
-        marginRight: 0,
+      cards: {
+        "& > div": {
+          width: "100%",
+        },
       },
-    },
-    link: {
-      color: "#27AE60",
-      textDecoration: "none",
     },
   })
 );

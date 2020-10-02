@@ -13,69 +13,183 @@ import MaskedInput from "react-maskedinput";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    container: {
-      position: "relative",
-      backgroundColor: "white",
-      padding: "16px 0",
-      boxSizing: "border-box",
-      marginTop: 16,
-      paddingBottom: 16,
-      "& > nav": {
+    [theme.breakpoints.between("md", "xl")]: {
+      container: {
+        position: "relative",
+        backgroundColor: "white",
+        padding: "16px 0",
+        boxSizing: "border-box",
+        marginTop: 16,
+        paddingBottom: 16,
+        "& > nav": {
+          maxWidth: 1280,
+          margin: "0 auto",
+          boxSizing: "border-box",
+          padding: "0 48px",
+        },
+      },
+      innerContainer: {
         maxWidth: 1280,
         margin: "0 auto",
+        padding: "0 48px",
+        boxSizing: "border-box",
+      },
+      fromCard: {
+        padding: 24,
+        backgroundColor: "#F3F3F3",
+        borderRadius: 16,
+        minHeight: 180,
+        textAlign: "left",
+      },
+      toCard: {
+        padding: 24,
+        backgroundColor: "#F3F3F3",
+        borderRadius: 16,
+        minHeight: 180,
+      },
+      inputStyle: {
+        marginTop: 12,
+        marginBottom: 16,
+        display: "block",
+        "& > div": {
+          minWidth: 350,
+        },
+      },
+      inputStyleDate: {
+        minWidth: 120,
+        marginRight: 16,
+      },
+      arrowIcon: {
+        margin: "10% 16px",
+      },
+      cardWrap: {
+        textAlign: "right",
+      },
+      sumWrap: {
+        textAlign: "left",
+        width: "60%",
+        marginLeft: "auto",
+        marginTop: "32px",
+        "& > div": {
+          width: "100%",
+        },
+      },
+      btnWrap: {
+        textAlign: "left",
+        width: "100%",
+        marginRight: "auto",
+        marginTop: "32px",
+        "& > div": {
+          width: "100%",
+        },
       },
     },
-    innerContainer: {
-      maxWidth: 1280,
-      margin: "0 auto",
-    },
-    fromCard: {
-      padding: 24,
-      backgroundColor: "#F3F3F3",
-      borderRadius: 16,
-      minHeight: 180,
-      textAlign: "left",
-    },
-    toCard: {
-      padding: 24,
-      backgroundColor: "#F3F3F3",
-      borderRadius: 16,
-      minHeight: 180,
-    },
-    inputStyle: {
-      marginTop: 12,
-      marginBottom: 16,
-      display: "block",
-      "& > div": {
-        minWidth: 350,
+    [theme.breakpoints.down("sm")]: {
+      container: {
+        position: "relative",
+        backgroundColor: "white",
+        padding: "16px 0",
+        boxSizing: "border-box",
+        marginTop: 16,
+        paddingBottom: 16,
+        "& > nav": {
+          maxWidth: 1280,
+          margin: "0 auto",
+          boxSizing: "border-box",
+          padding: "0 48px",
+        },
+      },
+      innerContainer: {
+        maxWidth: 1280,
+        margin: "0 auto",
+        padding: "0 24px",
+        boxSizing: "border-box",
+      },
+      fromCard: {
+        padding: 16,
+        backgroundColor: "#F3F3F3",
+        borderRadius: 16,
+        minHeight: 180,
+        textAlign: "left",
+      },
+      toCard: {
+        padding: 16,
+        backgroundColor: "#F3F3F3",
+        borderRadius: 16,
+        minHeight: 180,
+      },
+      inputStyle: {
+        marginTop: 12,
+        marginBottom: 16,
+        display: "block",
+        "& > div": {
+          minWidth: "100%",
+        },
+      },
+      inputStyleDate: {
+        minWidth: "auto",
+        width: "calc(50% - 8px)",
+        marginRight: 16,
+      },
+      inputStyleDate2: {
+        minWidth: "auto",
+        width: "calc(50% - 8px)",
+      },
+      arrowIcon: {
+        margin: "14% 8px",
+      },
+      cardWrap: {
+        textAlign: "right",
+        width: "calc(50% - 20px)",
+      },
+      cardWrap2: {
+        width: "calc(50% - 20px)",
+      },
+      sumWrap: {
+        textAlign: "left",
+        width: "60%",
+        marginLeft: "auto",
+        marginTop: "32px",
+        "& > div": {
+          width: "100%",
+        },
+      },
+      btnWrap: {
+        textAlign: "left",
+        width: "100%",
+        marginRight: "auto",
+        marginTop: "32px",
+        "& > div": {
+          width: "100%",
+        },
       },
     },
-    inputStyleDate: {
-      minWidth: 120,
-      marginRight: 16,
-    },
-    arrowIcon: {
-      margin: "auto 16px",
-    },
-    cardWrap: {
-      textAlign: "right",
-    },
-    sumWrap: {
-      textAlign: "left",
-      width: "60%",
-      marginLeft: "auto",
-      marginTop: "32px",
-      "& > div": {
+    [theme.breakpoints.down("xs")]: {
+      cardWrap: {
+        textAlign: "right",
         width: "100%",
       },
-    },
-    btnWrap: {
-      textAlign: "left",
-      width: "100%",
-      marginRight: "auto",
-      marginTop: "32px",
-      "& > div": {
+      cardWrap2: {
         width: "100%",
+      },
+      wrapCrd: {
+        flexWrap: "wrap",
+      },
+      arrowIcon: {
+        margin: "12px auto",
+        transform: "rotate(90deg)",
+      },
+      sumWrap: {
+        width: "100%",
+        marginLeft: "0",
+        marginTop: "12px",
+      },
+      btnWrap: {
+        width: "100%",
+        marginTop: "12px",
+      },
+      arrowIcon2: {
+        display: "none",
       },
     },
   })
@@ -153,7 +267,12 @@ const BaspanaHitPage = () => {
             >
               Мгновенный перевод денег между картами любых банков
             </BccTypography>
-            <Grid container justify="center" wrap="nowrap">
+            <Grid
+              container
+              justify="center"
+              wrap="nowrap"
+              className={classes.wrapCrd}
+            >
               <Grid item className={classes.cardWrap}>
                 <div className={classes.fromCard}>
                   <Grid
@@ -211,7 +330,7 @@ const BaspanaHitPage = () => {
                     variant="filled"
                     onChange={(e: any) => setCardCvv(e.target.value)}
                     id="cardCvv"
-                    className={classes.inputStyleDate}
+                    className={classes.inputStyleDate2}
                     name="cardCvv"
                     value={cardCvv}
                     InputLabelProps={{
@@ -222,29 +341,13 @@ const BaspanaHitPage = () => {
                     }}
                   />
                 </div>
-                <div className={classes.sumWrap}>
-                  <BccInput
-                    label="Сумма перевода, ₸"
-                    variant="filled"
-                    onChange={(e: any) => setSum(e.target.value)}
-                    id="sum"
-                    name="sum"
-                    value={sum}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                  />
-                  <BccTypography type="p4" block mt="12px">
-                    Комиссия: 200 ₸
-                  </BccTypography>
-                </div>
               </Grid>
               <Grid item className={classes.arrowIcon}>
                 <img
                   src={process.env.PUBLIC_URL + "/img/icons/arrow-right.svg"}
                 />
               </Grid>
-              <Grid item>
+              <Grid item className={classes.cardWrap2}>
                 <div className={classes.fromCard}>
                   <Grid
                     container
@@ -282,6 +385,39 @@ const BaspanaHitPage = () => {
                     }}
                   />
                 </div>
+              </Grid>
+            </Grid>
+            <Grid
+              container
+              justify="center"
+              wrap="nowrap"
+              className={classes.wrapCrd}
+            >
+              <Grid item className={classes.cardWrap}>
+                <div className={classes.sumWrap}>
+                  <BccInput
+                    label="Сумма перевода, ₸"
+                    variant="filled"
+                    onChange={(e: any) => setSum(e.target.value)}
+                    id="sum"
+                    name="sum"
+                    value={sum}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                  <BccTypography type="p4" block mt="12px">
+                    Комиссия: 200 ₸
+                  </BccTypography>
+                </div>
+              </Grid>
+              <Grid item className={classes.arrowIcon2}>
+                <img
+                  src={process.env.PUBLIC_URL + "/img/icons/arrow-right.svg"}
+                  style={{ opacity: "0" }}
+                />
+              </Grid>
+              <Grid item className={classes.cardWrap2}>
                 <div className={classes.btnWrap}>
                   <BccButton variant="contained" color="primary">
                     Перевести 5200 ₸

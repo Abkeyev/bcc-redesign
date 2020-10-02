@@ -1,138 +1,288 @@
 import React from "react";
 import { Grid, Select, MenuItem } from "@material-ui/core";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import {
+  makeStyles,
+  createStyles,
+  Theme,
+  useTheme,
+} from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { BccTypography, BccChip, BccCard } from "./BccComponents";
 import { Link, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    [theme.breakpoints.between("md", "xl")]: {},
-    [theme.breakpoints.down("sm")]: {},
-    [theme.breakpoints.down("xs")]: {},
-    outerContainer: {
-      backgroundColor: "#FFFFFF",
-    },
-    container: {
-      maxWidth: 1280,
-      padding: "64px 0 104px",
-      margin: "0 auto",
-      position: "relative",
-    },
-    title: {},
-    cardsText: {
-      "& > div": {
-        width: "calc(50% - 8px)",
+    [theme.breakpoints.between("lg", "xl")]: {
+      outerContainer: {
+        backgroundColor: "#FFFFFF",
       },
-    },
-
-    cardsWrap: {
-      width: "100%",
-      overflowX: "hidden",
-    },
-    cards: {
-      width: "calc((410px * 5) + (4 * 24px))",
-      marginBottom: 24,
-      marginLeft: 0,
-      transition: "margin-left .5s ease-in-out",
-      "& > div": {
-        marginRight: 24,
-        width: "410px",
-      },
-      "& > div:last-child": {
-        marginRight: 0,
-      },
-    },
-    cardsSecond: {
-      "& > div": {
-        width: "calc(50% - 12px)",
-      },
-    },
-    leftArrow: {
-      position: "relative",
-      height: 40,
-      width: 40,
-      borderRadius: "50%",
-      marginRight: 20,
-      border: "1px solid #4D565F",
-      display: "inline-block",
-      textAlign: "center",
-      lineHeight: "42px",
-      boxSizing: "border-box",
-      cursor: "pointer",
-      "&:hover": {
-        backgroundColor: "#4D565F",
-        "& > svg > path": {
-          stroke: "white",
-        },
-      },
-      "& > svg": {
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        "& > path": {
-          stroke: "#4D565F",
-        },
-      },
-    },
-    rightArrow: {
-      position: "relative",
-      height: 40,
-      width: 40,
-      borderRadius: "50%",
-      border: "1px solid #4D565F",
-      display: "inline-block",
-      textAlign: "center",
-      lineHeight: "42px",
-      boxSizing: "border-box",
-      cursor: "pointer",
-      "&:hover": {
-        backgroundColor: "#4D565F",
-        "& > svg > path": {
-          stroke: "white",
-        },
-      },
-      "& > svg": {
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        "& > path": {
-          stroke: "#4D565F",
-        },
-      },
-    },
-    usefulHead: {
-      marginBottom: 32,
-    },
-    sliderSteps: {
-      position: "absolute",
-      bottom: 64,
-      width: 62,
-      left: "calc(50% - 31px)",
-      display: "flex",
-      flexWrap: "nowrap",
-      zIndex: 99,
-      justifyContent: "space-between",
-      alignItems: "center",
-      "& > div": {
-        cursor: "pointer",
-        width: 10,
-        marginRight: 16,
-        height: 10,
-        borderRadius: "50%",
+      container: {
+        maxWidth: 1280,
+        padding: "64px 48px 96px",
+        margin: "0 auto",
         boxSizing: "border-box",
+        position: "relative",
+      },
+      title: {},
+      cardsText: {
+        "& > div": {
+          width: "calc(50% - 8px)",
+        },
+      },
+      cardsWrap: {
+        width: "100%",
+        overflowX: "hidden",
+      },
+      cards: {
+        width: "calc((380px * 5) + (4 * 22px))",
+        marginBottom: 24,
+        marginLeft: 0,
+        transition: "margin-left .5s ease-in-out",
+        "& > div": {
+          marginRight: 22,
+          width: 380,
+          padding: 10,
+        },
+        "& > div:last-child": {
+          marginRight: 0,
+        },
+      },
+      leftArrow: {
+        position: "relative",
+        height: 40,
+        width: 40,
+        borderRadius: "50%",
+        marginRight: 20,
         border: "1px solid #4D565F",
+        display: "inline-block",
+        textAlign: "center",
+        lineHeight: "42px",
+        boxSizing: "border-box",
+        cursor: "pointer",
         "&:hover": {
           backgroundColor: "#4D565F",
+          "& > svg > path": {
+            stroke: "white",
+          },
+        },
+        "& > svg": {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          "& > path": {
+            stroke: "#4D565F",
+          },
         },
       },
-      "& > div:last-child": {
-        marginRight: 0,
+      rightArrow: {
+        position: "relative",
+        height: 40,
+        width: 40,
+        borderRadius: "50%",
+        border: "1px solid #4D565F",
+        display: "inline-block",
+        textAlign: "center",
+        lineHeight: "42px",
+        boxSizing: "border-box",
+        cursor: "pointer",
+        "&:hover": {
+          backgroundColor: "#4D565F",
+          "& > svg > path": {
+            stroke: "white",
+          },
+        },
+        "& > svg": {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          "& > path": {
+            stroke: "#4D565F",
+          },
+        },
+      },
+      usefulHead: {
+        marginBottom: 32,
+      },
+      sliderSteps: {
+        position: "absolute",
+        bottom: 64,
+        width: 62,
+        left: "calc(50% - 31px)",
+        display: "flex",
+        flexWrap: "nowrap",
+        zIndex: 99,
+        justifyContent: "space-between",
+        alignItems: "center",
+        "& > div": {
+          cursor: "pointer",
+          width: 10,
+          marginRight: 16,
+          height: 10,
+          borderRadius: "50%",
+          boxSizing: "border-box",
+          border: "1px solid #4D565F",
+          "&:hover": {
+            backgroundColor: "#4D565F",
+          },
+        },
+        "& > div:last-child": {
+          marginRight: 0,
+        },
+      },
+      active: {
+        backgroundColor: "#4D565F",
       },
     },
-    active: {
-      backgroundColor: "#4D565F",
+    [theme.breakpoints.down("md")]: {
+      outerContainer: {
+        backgroundColor: "#FFFFFF",
+      },
+      container: {
+        maxWidth: 1280,
+        padding: "64px 48px 96px",
+        margin: "0 auto",
+        boxSizing: "border-box",
+        position: "relative",
+      },
+      title: {},
+      cardsText: {
+        "& > div": {
+          width: "calc(50% - 8px)",
+        },
+      },
+      cardsWrap: {
+        width: "100%",
+        overflowX: "hidden",
+      },
+      cards: {
+        width: "calc((((100vw - 120px) / 3) * 5) + (4 * 12px))",
+        marginBottom: 24,
+        marginLeft: 0,
+        transition: "margin-left .5s ease-in-out",
+        "& > div": {
+          marginRight: 12,
+          width: "calc((100vw - 120px) / 3)",
+          padding: 10,
+        },
+        "& > div:last-child": {
+          marginRight: 0,
+        },
+      },
+      leftArrow: {
+        position: "relative",
+        height: 40,
+        width: 40,
+        borderRadius: "50%",
+        marginRight: 20,
+        border: "1px solid #4D565F",
+        display: "inline-block",
+        textAlign: "center",
+        lineHeight: "42px",
+        boxSizing: "border-box",
+        cursor: "pointer",
+        "&:hover": {
+          backgroundColor: "#4D565F",
+          "& > svg > path": {
+            stroke: "white",
+          },
+        },
+        "& > svg": {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          "& > path": {
+            stroke: "#4D565F",
+          },
+        },
+      },
+      rightArrow: {
+        position: "relative",
+        height: 40,
+        width: 40,
+        borderRadius: "50%",
+        border: "1px solid #4D565F",
+        display: "inline-block",
+        textAlign: "center",
+        lineHeight: "42px",
+        boxSizing: "border-box",
+        cursor: "pointer",
+        "&:hover": {
+          backgroundColor: "#4D565F",
+          "& > svg > path": {
+            stroke: "white",
+          },
+        },
+        "& > svg": {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          "& > path": {
+            stroke: "#4D565F",
+          },
+        },
+      },
+      usefulHead: {
+        marginBottom: 32,
+      },
+      sliderSteps: {
+        position: "absolute",
+        bottom: 64,
+        width: 62,
+        left: "calc(50% - 31px)",
+        display: "flex",
+        flexWrap: "nowrap",
+        zIndex: 99,
+        justifyContent: "space-between",
+        alignItems: "center",
+        "& > div": {
+          cursor: "pointer",
+          width: 10,
+          marginRight: 16,
+          height: 10,
+          borderRadius: "50%",
+          boxSizing: "border-box",
+          border: "1px solid #4D565F",
+          "&:hover": {
+            backgroundColor: "#4D565F",
+          },
+        },
+        "& > div:last-child": {
+          marginRight: 0,
+        },
+      },
+      active: {
+        backgroundColor: "#4D565F",
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      cards: {
+        width: "calc((((100vw - 108px) / 2) * 5) + (4 * 12px))",
+        "& > div": {
+          marginRight: 12,
+          width: "calc((100vw - 108px) / 2)",
+        },
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      container: {
+        padding: 24,
+        paddingBottom: 56,
+      },
+      cards: {
+        width: "calc((((100vw - 48px)) * 5) + (4 * 12px))",
+        marginBottom: 24,
+        marginLeft: 0,
+        transition: "margin-left .5s ease-in-out",
+        "& > div": {
+          marginRight: 12,
+          width: "calc((100vw - 48px))",
+          padding: 10,
+        },
+      },
     },
   })
 );
@@ -141,6 +291,11 @@ const Useful = (props: any) => {
   const location = useLocation();
   const classes = useStyles({});
   const [slide, setSlide] = React.useState(0);
+  const theme = useTheme();
+  const lg = useMediaQuery(theme.breakpoints.up("lg"));
+  const md = useMediaQuery(theme.breakpoints.up("md"));
+  const small = useMediaQuery(theme.breakpoints.down("sm"));
+  const vSmall = useMediaQuery(theme.breakpoints.down("xs"));
 
   const steps = [
     {
@@ -175,6 +330,14 @@ const Useful = (props: any) => {
         setSlide(slide - 1);
       }
     }
+  };
+
+  const marginLeft = () => {
+    if (vSmall) return `calc(((100vw - 48px) + 12px) * ${slide * -1})`;
+    else if (small) return `calc(((100vw - 108px) + 24px) * ${slide * -1})`;
+    else if (md) return `calc(((100vw - 120px) / 3 + 12px) * ${slide * -1})`;
+    else if (lg) return `-${402 * slide}px`;
+    else return 0;
   };
 
   return (
@@ -252,7 +415,7 @@ const Useful = (props: any) => {
             justify="space-between"
             wrap="nowrap"
             className={classes.cards}
-            style={{ marginLeft: `-${432 * slide}px` }}
+            style={{ marginLeft: marginLeft() }}
           >
             <Grid item>
               <BccCard

@@ -4,74 +4,89 @@ import { BccChip, BccTypography, BccButton } from "..";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    card: {
-      width: "100%",
-      height: "100%",
-      display: "flex",
-      flexDirection: "column",
-      boxShadow:
-        "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
-      borderRadius: 8,
-      overflow: "hidden",
-    },
-    title: {
-      marginBottom: 16,
-    },
-    text: {
-      marginBottom: 20,
-    },
-    horizontalText: {
-      marginBottom: 48,
-    },
-    horizontal: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      height: "auto",
-      "& > div:first-child": {
-        width: "30%",
-      },
-      "& > div:last-child": {
-        width: "70%",
-      },
-    },
-    fullImg: {},
-    horizontalImg: {
-      minHeight: 200,
-      order: 1,
-      display: "flex",
-      alignItems: "center",
-      backgroundColor: "#F6F6F6",
-      "& > img": {
-        display: "block",
+    [theme.breakpoints.down("xl")]: {
+      card: {
         width: "100%",
-        margin: "0 auto",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        boxShadow:
+          "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
+        borderRadius: 8,
+        overflow: "hidden",
+        "& > div:first-child": {
+          backgroundPositionX: "center",
+        },
+      },
+      title: {
+        marginBottom: 16,
+      },
+      text: {
+        marginBottom: 20,
+      },
+      horizontalText: {
+        marginBottom: 48,
+      },
+      horizontal: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        height: "auto",
+        "& > div:first-child": {
+          width: "30%",
+        },
+        "& > div:last-child": {
+          width: "70%",
+        },
+      },
+      fullImg: {},
+      horizontalImg: {
+        minHeight: 200,
+        order: 1,
+        display: "flex",
+        alignItems: "center",
+        backgroundColor: "#F6F6F6",
+        "& > img": {
+          display: "block",
+          width: "100%",
+          margin: "0 auto",
+        },
+      },
+      img: {
+        minHeight: 192,
+        display: "flex",
+        alignItems: "center",
+        "& > img": {
+          display: "block",
+          width: "40%",
+          margin: "0 auto",
+        },
+      },
+      contentCard: {
+        padding: 20,
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+      },
+      chip: {
+        marginRight: 8,
+        marginBottom: 8,
+        display: "flex",
+        width: "fit-content",
+        height: "fit-content",
+      },
+      cardBtn: {
+        marginTop: "auto",
+      },
+      chipWrap: {
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        "& > span:last-child": {
+          marginBottom: 16,
+        },
       },
     },
-    img: {
-      minHeight: 192,
-      display: "flex",
-      alignItems: "center",
-      "& > img": {
-        display: "block",
-        width: "40%",
-        margin: "0 auto",
-      },
-    },
-    content: {
-      padding: 20,
-      display: "flex",
-      flexDirection: "column",
-      height: "100%",
-    },
-    chip: {
-      marginRight: 12,
-      marginBottom: 16,
-      display: "flex",
-      width: "fit-content",
-    },
-    cardBtn: {
-      marginTop: "auto",
-    },
+    [theme.breakpoints.down("sm")]: {},
   })
 );
 
@@ -133,29 +148,30 @@ const BccCard = (props: BccCardProps) => {
           </div>
         ))}
 
-      <div className={classes.content}>
-        {chips &&
-          chips.length > 0 &&
-          chips.map((c: any) => {
-            return (
-              <>
-                <BccChip
-                  className={classes.chip}
-                  type={c.type === "outlined" ? "outlined" : "filled"}
-                  color={
-                    c.color === "sale"
-                      ? "sale"
-                      : c.color === "secondary"
-                      ? "secondary"
-                      : "primary"
-                  }
-                  mr="16px"
-                >
-                  {c.title}
-                </BccChip>
-              </>
-            );
-          })}
+      <div className={classes.contentCard}>
+        {chips?.length && (
+          <div className={classes.chipWrap}>
+            {chips.map((c: any) => {
+              return (
+                <>
+                  <BccChip
+                    className={classes.chip}
+                    type={c.type === "outlined" ? "outlined" : "filled"}
+                    color={
+                      c.color === "sale"
+                        ? "sale"
+                        : c.color === "secondary"
+                        ? "secondary"
+                        : "primary"
+                    }
+                  >
+                    {c.title}
+                  </BccChip>
+                </>
+              );
+            })}
+          </div>
+        )}
         <BccTypography type="h5" block className={classes.title}>
           {title}
         </BccTypography>

@@ -5,93 +5,254 @@ import { BccButton, BccTypography } from "../components/BccComponents";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    [theme.breakpoints.between("md", "xl")]: {},
-    [theme.breakpoints.down("sm")]: {},
-    [theme.breakpoints.down("xs")]: {},
-    outerContainer: {
-      backgroundSize: "cover",
-    },
-    container: {
-      position: "relative",
-      margin: "0 auto",
-      padding: "0",
-      paddingBottom: "32px",
-      maxWidth: 1280,
-      boxSizing: "border-box",
-    },
-    slderTitle: {
-      marginBottom: 24,
-    },
-    sliderSubTitle: {
-      marginBottom: 136,
-      color: "#4D565F",
-    },
-    sliderBtn: {
-      fontSize: 20,
-      minWidth: 350,
-    },
-    slider: {
-      width: "100%",
-      overflowX: "hidden",
-      "& > div": {
-        width: 1280,
-        transition: "all .7s ease-in-out",
-        "& > div": {
-          width: 1280,
-        },
+    [theme.breakpoints.between("lg", "xl")]: {
+      outerContainer: {
+        backgroundSize: "cover",
       },
-    },
-    slide: {
-      "& > div:first-child": {
-        width: "calc(50% - 16px)",
-        padding: "80px 0 92px",
-      },
-      "& > div:last-child": {
+      container: {
         position: "relative",
-        width: "calc(50% - 16px)",
-        "& > img": {
-          position: "absolute",
-          right: "-40%",
-          top: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "90%",
-          maxHeight: "300px",
+        margin: "0 auto",
+        padding: "0 48px",
+        paddingBottom: "32px",
+        maxWidth: 1280,
+        height: 480,
+        boxSizing: "border-box",
+      },
+      slderTitle: {
+        marginBottom: 24,
+      },
+      sliderSubTitle: {
+        marginBottom: 136,
+        color: "#4D565F",
+      },
+      sliderBtn: {
+        height: 64,
+        fontSize: 18,
+        lineHeight: "64px",
+        minWidth: 350,
+        position: "absolute",
+        bottom: 96,
+      },
+      slider: {
+        width: "100%",
+        overflowX: "hidden",
+        paddingTop: 24,
+        "& > div": {
+          width: "100%",
+          transition: "all .7s ease-in-out",
+          "& > div": {
+            width: "100%",
+          },
         },
       },
-    },
-    sliderSteps: {
-      position: "absolute",
-      bottom: 0,
-      width: 210,
-      left: "calc(50% - 105px)",
-      display: "flex",
-      flexWrap: "nowrap",
-      zIndex: 99,
-      justifyContent: "space-between",
-      alignItems: "center",
-    },
-    sliderStep: {
-      cursor: "pointer",
-      width: 10,
-      marginRight: 16,
-      height: 10,
-      borderRadius: "50%",
-      boxSizing: "border-box",
-      border: "1px solid #27AE60",
-      "&:hover": {
+      slide: {
+        "& > div:first-child": {
+          width: "calc(50% - 16px)",
+          padding: "80px 0 92px",
+        },
+        "& > div:last-child": {
+          position: "relative",
+          width: "calc(50% - 16px)",
+          "& > img": {
+            position: "absolute",
+            right: "-40%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "90%",
+            maxHeight: "300px",
+          },
+        },
+      },
+      sliderSteps: {
+        position: "absolute",
+        bottom: 0,
+        width: 210,
+        left: "calc(50% - 105px)",
+        display: "flex",
+        flexWrap: "nowrap",
+        zIndex: 99,
+        justifyContent: "space-between",
+        alignItems: "center",
+      },
+      sliderStep: {
+        cursor: "pointer",
+        width: 10,
+        marginRight: 16,
+        height: 10,
+        borderRadius: "50%",
+        boxSizing: "border-box",
+        border: "1px solid #27AE60",
+        "&:hover": {
+          backgroundColor: "#27AE60",
+        },
+      },
+      active: {
         backgroundColor: "#27AE60",
       },
+      slideLeft: {
+        marginRight: 64,
+        cursor: "pointer",
+      },
+      slideRight: {
+        marginLeft: 48,
+        cursor: "pointer",
+      },
     },
-    active: {
-      backgroundColor: "#27AE60",
+    [theme.breakpoints.down("md")]: {
+      outerContainer: {
+        backgroundSize: "cover",
+      },
+      container: {
+        position: "relative",
+        margin: "0 auto",
+        padding: "0 48px",
+        paddingBottom: "32px",
+        maxWidth: 1280,
+        height: 480,
+        boxSizing: "border-box",
+      },
+      slderTitle: {
+        marginBottom: 24,
+      },
+      sliderSubTitle: {
+        marginBottom: 136,
+        color: "#4D565F",
+      },
+      sliderBtn: {
+        minWidth: 300,
+        bottom: 96,
+        height: 64,
+        fontSize: 18,
+        lineHeight: "64px",
+        position: "absolute",
+      },
+      slider: {
+        width: "100%",
+        overflowX: "hidden",
+        paddingTop: 24,
+        "& > div": {
+          width: "100%",
+          transition: "all .7s ease-in-out",
+          "& > div": {
+            width: "100%",
+          },
+        },
+      },
+      slide: {
+        "& > div:first-child": {
+          width: "calc(50% - 16px)",
+          padding: "80px 0 92px",
+        },
+        "& > div:last-child": {
+          position: "relative",
+          width: "calc(50% - 16px)",
+          "& > img": {
+            position: "absolute",
+            right: "-40%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "90%",
+            maxHeight: "300px",
+          },
+        },
+      },
+      sliderSteps: {
+        position: "absolute",
+        bottom: 0,
+        width: 210,
+        left: "calc(50% - 105px)",
+        display: "flex",
+        flexWrap: "nowrap",
+        zIndex: 99,
+        justifyContent: "space-between",
+        alignItems: "center",
+      },
+      sliderStep: {
+        cursor: "pointer",
+        width: 10,
+        marginRight: 16,
+        height: 10,
+        borderRadius: "50%",
+        boxSizing: "border-box",
+        border: "1px solid #27AE60",
+        "&:hover": {
+          backgroundColor: "#27AE60",
+        },
+      },
+      active: {
+        backgroundColor: "#27AE60",
+      },
+      slideLeft: {
+        marginRight: 64,
+        cursor: "pointer",
+      },
+      slideRight: {
+        marginLeft: 48,
+        cursor: "pointer",
+      },
     },
-    slideLeft: {
-      marginRight: 64,
-      cursor: "pointer",
+    [theme.breakpoints.down("sm")]: {
+      sliderBtn: {
+        minWidth: 250,
+        bottom: "initial",
+        position: "relative",
+      },
+      sliderSubTitle: {
+        marginBottom: 64,
+      },
+      slide: {
+        "& > div:first-child": {
+          padding: "96px 0 40px",
+        },
+      },
+      container: {
+        height: "auto",
+        padding: "0 24px",
+      },
     },
-    slideRight: {
-      marginLeft: 48,
-      cursor: "pointer",
+    [theme.breakpoints.down("xs")]: {
+      container: {
+        height: "auto",
+        padding: "0 24px",
+      },
+      sliderBtn: {
+        height: 56,
+        fontSize: 16,
+        minWidth: "none",
+        width: "100%",
+        boxSizing: "border-box",
+        bottom: "initial",
+        position: "relative",
+      },
+      sliderSteps: {
+        width: 94,
+        left: "calc(50% - 47px)",
+      },
+      sliderSubTitle: {
+        marginBottom: 16,
+      },
+      slideRight: { display: "none" },
+      slideLeft: { display: "none" },
+      slide: {
+        flexDirection: "column-reverse",
+        flexWrap: "wrap",
+        "& > div:first-child": {
+          width: "100%",
+          padding: "16px 0 0",
+        },
+        "& > div:last-child": {
+          marginTop: 46,
+          width: "100%",
+          "& > img": {
+            position: "relative",
+            width: "100%",
+            maxWidth: "none",
+            top: "initial",
+            right: "initial",
+            transform: "none",
+          },
+        },
+      },
     },
   })
 );
@@ -197,9 +358,7 @@ const Slider = (props: SliderProps) => {
                           color="primary"
                           className={classes.sliderBtn}
                         >
-                          <BccTypography type="p1" block>
-                            {step.btnText}
-                          </BccTypography>
+                          {step.btnText}
                         </BccButton>
                       </Grid>
                       <Grid item>
@@ -237,9 +396,7 @@ const Slider = (props: SliderProps) => {
                     color="primary"
                     className={classes.sliderBtn}
                   >
-                    <BccTypography type="p1" block>
-                      {props.steps.btnText}
-                    </BccTypography>
+                    {props.steps.btnText}
                   </BccButton>
                 </Grid>
                 <Grid item>

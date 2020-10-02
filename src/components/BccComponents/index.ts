@@ -73,3 +73,4 @@ export { default as BccTableEx } from "./BccTable/BccTableEx";
 export { default as BccSliderEx } from "./BccSlider/BccSliderEx";
 // NEW
 export { default as BccCard } from "./BccCard/BccCard";
+export { default as BccCardFull } from "./BccCard/BccCardFull";

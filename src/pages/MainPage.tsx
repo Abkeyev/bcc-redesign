@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  Slider,
-  Featured,
-  Widgets,
-  MobileBanking,
-  Useful,
-  News,
-} from "../components";
+import { Slider, Featured, Widgets, Useful, News } from "../components";
+import { BccCardFull, BccTypography } from "../components/BccComponents";
 
 const MainPage = () => {
   return (
@@ -37,7 +31,29 @@ const MainPage = () => {
         <Featured />
         <Widgets />
         <Useful />
-        <MobileBanking />
+        <BccCardFull
+          chips={[
+            {
+              title: "Мобильный банкинг",
+              type: "outlined",
+              color: "secondary",
+            },
+          ]}
+          title="BCC.KZ"
+          text={
+            <>
+              <BccTypography align="left" block type="p2" mb="32px">
+                Управляй банковскими счетами онлайн через браузер или приложение
+              </BccTypography>
+              <img
+                style={{ marginRight: 20 }}
+                src={process.env.PUBLIC_URL + "/img/as.svg"}
+              />
+              <img src={process.env.PUBLIC_URL + "/img/gp.svg"} />
+            </>
+          }
+          bgImg="/img/mobile-app.svg"
+        />
         <News />
       </div>
     </div>

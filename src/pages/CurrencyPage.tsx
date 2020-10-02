@@ -1,5 +1,5 @@
 import React from "react";
-import { Slider, MobileBanking, Benefits, Order, News } from "../components";
+import { Slider, Benefits, Order, News } from "../components";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Grid, MenuItem } from "@material-ui/core";
 import {
@@ -13,38 +13,107 @@ import {
   BccTableHead,
   BccTableRow,
   BccTableBody,
+  BccCardFull,
 } from "../components/BccComponents";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    content: {
-      position: "relative",
-      margin: "0 auto 64px",
-      padding: "80px 0 0",
-      maxWidth: 1280,
-      boxSizing: "border-box",
-    },
-    input: {
-      minWidth: 360,
-      margin: 0,
-    },
-    swap: {
-      margin: "0 20px",
-    },
-    tableOuter: {
-      overflow: "visible",
-    },
-    table: {
-      borderRadius: 4,
-      boxShadow:
-        "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
-      marginTop: 32,
-      "& tr:last-child > td": {
-        borderBottom: "none",
+    [theme.breakpoints.between("md", "xl")]: {
+      contents: {
+        position: "relative",
+        margin: "0 auto 64px",
+        padding: "80px 48px 0",
+        maxWidth: 1280,
+        boxSizing: "border-box",
       },
-      "& tr > td": { border: "none", borderBottom: "0.5px solid #97979780" },
-      "& tbody > tr:nth-child(2n)": {
-        backgroundColor: "#FAFAFA",
+      input: {
+        minWidth: 360,
+        margin: 0,
+      },
+      swap: {
+        margin: "0 20px",
+      },
+      tableOuter: {
+        overflow: "visible",
+      },
+      chip: {
+        width: "maxContent",
+        overflow: "scroll",
+        flexWrap: "nowrap",
+        display: "flex",
+      },
+      table: {
+        borderRadius: 4,
+        boxShadow:
+          "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
+        marginTop: 32,
+        "& tr:last-child > td": {
+          borderBottom: "none",
+        },
+        "& tr > td": { border: "none", borderBottom: "0.5px solid #97979780" },
+        "& tbody > tr:nth-child(2n)": {
+          backgroundColor: "#FAFAFA",
+        },
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      contents: {
+        position: "relative",
+        margin: "0 auto 64px",
+        padding: "80px 24px 0",
+        maxWidth: 1280,
+        boxSizing: "border-box",
+      },
+      chip: {
+        width: "maxContent",
+        overflow: "scroll",
+        flexWrap: "nowrap",
+        display: "flex",
+      },
+      input: {
+        minWidth: "250px",
+        margin: 0,
+      },
+      swap: {
+        margin: "0 20px",
+      },
+      tableOuter: {
+        overflow: "visible",
+      },
+      table: {
+        borderRadius: 4,
+        boxShadow:
+          "0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)",
+        marginTop: 32,
+        "& tr:last-child > td": {
+          borderBottom: "none",
+        },
+        "& tr > td": { border: "none", borderBottom: "0.5px solid #97979780" },
+        "& tbody > tr:nth-child(2n)": {
+          backgroundColor: "#FAFAFA",
+        },
+      },
+      cur: {
+        justifyContent: "space-between",
+      },
+      ttle: {
+        marginTop: "36px!important",
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      cur: {
+        flexWrap: "wrap",
+        "& > div": {
+          width: "100%",
+          textAlign: "center",
+          margin: "12px 0",
+        },
+      },
+      date: {
+        marginBottom: "24px!important",
+      },
+      input: {
+        width: "100%",
       },
     },
   })
@@ -59,11 +128,17 @@ const CurrencyPage = () => {
   return (
     <div className="main-page">
       <div className="container">
-        <div className={classes.content}>
+        <div className={classes.contents}>
           <BccTypography type="h1" block mb="20px">
             Курсы валют
           </BccTypography>
-          <BccTypography type="p1" block mb="64px" color="#4D565F">
+          <BccTypography
+            type="p1"
+            block
+            className={classes.date}
+            mb="64px"
+            color="#4D565F"
+          >
             на 18.03.2020
           </BccTypography>
           <Grid
@@ -71,6 +146,7 @@ const CurrencyPage = () => {
             justify="flex-start"
             wrap="nowrap"
             alignItems="center"
+            className={classes.cur}
           >
             <Grid item>
               <BccInput
@@ -124,18 +200,26 @@ const CurrencyPage = () => {
               </BccInput>
             </Grid>
           </Grid>
-          <BccTypography type="h2" block mt="72px" mb="24px">
+          <BccTypography
+            className={classes.ttle}
+            type="h2"
+            block
+            mt="72px"
+            mb="24px"
+          >
             Курсы конвертации
           </BccTypography>
-          <BccChip type="filled" color="secondary" mr="16px">
-            По наличной валюте
-          </BccChip>
-          <BccChip type="outlined" color="secondary" mr="16px">
-            По безналичной валюте
-          </BccChip>
-          <BccChip type="outlined" color="secondary">
-            По платежным картам
-          </BccChip>
+          <div className={classes.chip}>
+            <BccChip type="filled" color="secondary" mr="16px">
+              По наличной валюте
+            </BccChip>
+            <BccChip type="outlined" color="secondary" mr="16px">
+              По безналичной валюте
+            </BccChip>
+            <BccChip type="outlined" color="secondary">
+              По платежным картам
+            </BccChip>
+          </div>
           <BccTableContainer className={classes.tableOuter}>
             <BccTable className={classes.table}>
               <BccTableHead>
@@ -282,7 +366,30 @@ const CurrencyPage = () => {
             </BccTable>
           </BccTableContainer>
         </div>
-        <MobileBanking />
+
+        <BccCardFull
+          chips={[
+            {
+              title: "Мобильный банкинг",
+              type: "outlined",
+              color: "secondary",
+            },
+          ]}
+          title="BCC.KZ"
+          text={
+            <>
+              <BccTypography align="left" block type="p2" mb="32px">
+                Управляй банковскими счетами онлайн через браузер или приложение
+              </BccTypography>
+              <img
+                style={{ marginRight: 20 }}
+                src={process.env.PUBLIC_URL + "/img/as.svg"}
+              />
+              <img src={process.env.PUBLIC_URL + "/img/gp.svg"} />
+            </>
+          }
+          bgImg="/img/mobile-app.svg"
+        />
       </div>
     </div>
   );

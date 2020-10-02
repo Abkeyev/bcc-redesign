@@ -14,78 +14,177 @@ import {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    content: {
-      position: "relative",
-      margin: "0 auto",
-      padding: "64px 0",
-      maxWidth: 1280,
-      boxSizing: "border-box",
-    },
-    outerContentTable: {
-      width: "100%",
-      backgroundColor: "#ffffff",
-    },
-    outerContent: {
-      width: "100%",
-      backgroundColor: "#fafafa",
-    },
-    tabsBranch: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      maxWidth: 1280,
-      margin: "0 auto",
-    },
-    tab: { position: "relative", bottom: -1 },
-    city: {
-      color: "#4D565F",
-      borderBottom: "1px dashed #4D565F",
-    },
-    switch: { color: "#B3B6BA" },
-    active: { color: "#27AE60" },
-    tableContainer: {
-      paddingTop: 120,
-      paddingBottom: 64,
-      position: "relative",
-      margin: "0 auto",
-      maxWidth: 1280,
-      boxSizing: "border-box",
-      "& > img": {
+    [theme.breakpoints.between("md", "xl")]: {
+      contents: {
+        position: "relative",
+        margin: "0 auto",
+        padding: "64px 48px",
+        maxWidth: 1280,
+        boxSizing: "border-box",
+      },
+      chip: {
+        width: "maxContent",
+        overflow: "scroll",
+        flexWrap: "nowrap",
+        display: "flex",
+      },
+      outerContentTable: {
         width: "100%",
+        backgroundColor: "#ffffff",
+      },
+      outerContent: {
+        width: "100%",
+        backgroundColor: "#fafafa",
+      },
+      tabsBranch: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        maxWidth: 1280,
+        boxSizing: "border-box",
+        padding: "0 48px",
+        margin: "0 auto",
+      },
+      tab: { position: "relative", bottom: -1 },
+      city: {
+        color: "#4D565F",
+        borderBottom: "1px dashed #4D565F",
+      },
+      switch: { color: "#B3B6BA" },
+      active: { color: "#27AE60" },
+      tableContainer: {
+        position: "relative",
+        margin: "0 auto",
+        maxWidth: 1280,
+        padding: "120px 48px 64px",
+        boxSizing: "border-box",
+        "& > img": {
+          width: "100%",
+        },
+      },
+      details: {
+        marginTop: 48,
+        "& > div": {
+          width: "30%",
+        },
+      },
+      table: {
+        "& td": {
+          borderColor: "#CCCFD1",
+        },
+        "& th": {
+          borderBottom: "none",
+        },
+        "& th:first-child": {
+          paddingLeft: 0,
+        },
+        "& th:last-child": {
+          paddingRight: 0,
+        },
+        "& tr > td:first-child": {
+          paddingLeft: 0,
+        },
+        "& tr > td:last-child": {
+          paddingRight: 0,
+        },
+        "& tr:last-child > td": {
+          borderBottom: "none",
+        },
+      },
+      tableIcon: {
+        display: "flex",
+        alignItems: "center",
       },
     },
-    details: {
-      marginTop: 48,
-      "& > div": {
-        width: "30%",
+    [theme.breakpoints.down("sm")]: {
+      contents: {
+        position: "relative",
+        margin: "0 auto",
+        padding: "86px 24px 32px",
+        maxWidth: 1280,
+        boxSizing: "border-box",
+      },
+      chip: {
+        width: "maxContent",
+        overflow: "scroll",
+        flexWrap: "nowrap",
+        display: "flex",
+      },
+      outerContentTable: {
+        width: "100%",
+        backgroundColor: "#ffffff",
+      },
+      outerContent: {
+        width: "100%",
+        backgroundColor: "#fafafa",
+      },
+      tabsBranch: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        maxWidth: 1280,
+        boxSizing: "border-box",
+        padding: "0 24px",
+        margin: "0 auto",
+      },
+      tab: { position: "relative", bottom: -1 },
+      city: {
+        color: "#4D565F",
+        borderBottom: "1px dashed #4D565F",
+      },
+      switch: { color: "#B3B6BA" },
+      active: { color: "#27AE60" },
+      tableContainer: {
+        position: "relative",
+        margin: "0 auto",
+        maxWidth: 1280,
+        padding: "24px",
+        boxSizing: "border-box",
+        "& > img": {
+          width: "100%",
+        },
+      },
+      details: {
+        marginTop: 48,
+        "& > div": {
+          width: "30%",
+        },
+      },
+      table: {
+        "& td": {
+          borderColor: "#CCCFD1",
+        },
+        "& th": {
+          borderBottom: "none",
+        },
+        "& th:first-child": {
+          paddingLeft: 0,
+        },
+        "& th:last-child": {
+          paddingRight: 0,
+        },
+        "& tr > td:first-child": {
+          paddingLeft: 0,
+        },
+        "& tr > td:last-child": {
+          paddingRight: 0,
+        },
+        "& tr:last-child > td": {
+          borderBottom: "none",
+        },
+      },
+      tableIcon: {
+        display: "flex",
+        alignItems: "center",
       },
     },
-    table: {
-      "& td": {
-        borderColor: "#CCCFD1",
+    [theme.breakpoints.down("xs")]: {
+      details: {
+        flexWrap: "wrap",
+        "& > div": {
+          width: "100%",
+        },
       },
-      "& th": {
-        borderBottom: "none",
-      },
-      "& th:first-child": {
-        paddingLeft: 0,
-      },
-      "& th:last-child": {
-        paddingRight: 0,
-      },
-      "& tr > td:first-child": {
-        paddingLeft: 0,
-      },
-      "& tr > td:last-child": {
-        paddingRight: 0,
-      },
-      "& tr:last-child > td": {
-        borderBottom: "none",
-      },
-    },
-    tableIcon: {
-      display: "flex",
-      alignItems: "center",
     },
   })
 );
@@ -98,16 +197,18 @@ const DetailsPage = () => {
     <div className="main-page">
       <div className="container">
         <div className={classes.outerContent}>
-          <div className={classes.content}>
+          <div className={classes.contents}>
             <BccTypography type="h1" block mb="24px">
               Реквизиты АО “Банк Центркредит”
             </BccTypography>
-            <BccChip type="filled" color="secondary" mr="16px">
-              Общие реквизиты
-            </BccChip>
-            <BccChip type="outlined" color="secondary">
-              Реквизиты для пополнения карточки
-            </BccChip>
+            <div className={classes.chip}>
+              <BccChip type="filled" color="secondary" mr="16px">
+                Общие реквизиты
+              </BccChip>
+              <BccChip type="outlined" color="secondary">
+                Реквизиты для пополнения карточки
+              </BccChip>
+            </div>
             <Grid
               container
               className={classes.details}

@@ -5,6 +5,100 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    [theme.breakpoints.between("md", "xl")]: {
+      container: {
+        backgroundColor: "#1F7042",
+      },
+      innerContainer: {
+        maxWidth: 1280,
+        margin: "0 auto",
+        width: "100%",
+        padding: "48px 48px 96px",
+        boxSizing: "border-box",
+      },
+      title: {
+        marginBottom: 50,
+      },
+      footerOne: { width: "35%" },
+      footerTwo: { width: "calc(65% - 50px)" },
+      footIcon: {
+        display: "block",
+        height: 20,
+        width: 20,
+      },
+      footIconSocial: {
+        display: "block",
+        height: 20,
+        width: 20,
+        marginRight: 15,
+      },
+      footLink: {
+        marginLeft: 10,
+        textDecoration: "none",
+        color: "white",
+        "&:hover": {
+          textDecoration: "underline",
+        },
+        "& > span": {
+          fontWeight: "bold",
+        },
+      },
+      footItem: {
+        marginBottom: 20,
+      },
+      footItemSocial: {
+        marginTop: 30,
+      },
+      footBtn: {
+        width: "100%",
+        color: "#1F7042",
+        maxWidth: 250,
+        lineHeight: "20px",
+        margin: "30px 0 20px",
+      },
+      mobileTitle: {
+        color: "#CCCFD1",
+        fontSize: 16,
+        fontWeight: "bold",
+        marginBottom: 10,
+      },
+      appLinks: {
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "nowrap",
+        justifyContent: "space-between",
+        width: "100%",
+        "& > a": {
+          disaply: "block",
+          width: "calc(50% - 15px)",
+          "& > img": { width: "100%" },
+        },
+      },
+      footLinks: {
+        marginBottom: 20,
+        "& > div": {
+          display: "flex",
+          flexDirection: "column",
+          width: "calc(50% - 15px)",
+          "& > a": {
+            display: "inline-block",
+            color: "white",
+            textDecoration: "none",
+            fontSize: 16,
+            marginBottom: 24,
+            "&:hover": {
+              textDecoration: "underline",
+            },
+          },
+          "& > a:last-child": { marginBottom: 0 },
+        },
+      },
+      footLicen: {
+        color: "#CCCFD1",
+        lineHeight: "19px",
+        fontSize: 16,
+      },
+    },
     [theme.breakpoints.down("sm")]: {
       container: {
         backgroundColor: "#1F7042",
@@ -13,7 +107,7 @@ const useStyles = makeStyles((theme: Theme) =>
         maxWidth: "100%",
         margin: "0 auto",
         width: "100%",
-        padding: "40px 20px",
+        padding: "48px",
         boxSizing: "border-box",
       },
       title: {
@@ -100,101 +194,10 @@ const useStyles = makeStyles((theme: Theme) =>
         fontSize: 16,
       },
     },
-    [theme.breakpoints.between("md", "xl")]: {
-      container: {
-        backgroundColor: "#1F7042",
-      },
-      innerContainer: {
-        maxWidth: 1280,
-        margin: "0 auto",
-        width: "100%",
-        padding: "40px 0 80px",
-        boxSizing: "border-box",
-      },
-      title: {
-        marginBottom: 50,
-      },
-      footerOne: { width: "35%" },
-      footerTwo: { width: "calc(65% - 50px)" },
-      footIcon: {
-        display: "block",
-        height: 20,
-        width: 20,
-      },
-      footIconSocial: {
-        display: "block",
-        height: 20,
-        width: 20,
-        marginRight: 15,
-      },
-      footLink: {
-        marginLeft: 10,
-        textDecoration: "none",
-        color: "white",
-        "&:hover": {
-          textDecoration: "underline",
-        },
-        "& > span": {
-          fontWeight: "bold",
-        },
-      },
-      footItem: {
-        marginBottom: 20,
-      },
-      footItemSocial: {
-        marginTop: 30,
-      },
-      footBtn: {
-        width: "100%",
-        color: "#1F7042",
-        maxWidth: 250,
-        lineHeight: "20px",
-        margin: "30px 0 20px",
-      },
-      mobileTitle: {
-        color: "#CCCFD1",
-        fontSize: 16,
-        fontWeight: "bold",
-        marginBottom: 10,
-      },
-      appLinks: {
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "nowrap",
-        justifyContent: "space-between",
-        width: "100%",
-        "& > a": {
-          disaply: "block",
-          width: "calc(50% - 15px)",
-          "& > img": { width: "100%" },
-        },
-      },
-      footLinks: {
-        marginBottom: 20,
-        "& > div": {
-          display: "flex",
-          flexDirection: "column",
-          width: "calc(50% - 15px)",
-          "& > a": {
-            display: "inline-block",
-            color: "white",
-            textDecoration: "none",
-            fontSize: 16,
-            marginBottom: 24,
-            "&:hover": {
-              textDecoration: "underline",
-            },
-          },
-          "& > a:last-child": { marginBottom: 0 },
-        },
-      },
-      footLicen: {
-        color: "#CCCFD1",
-        lineHeight: "19px",
-        fontSize: 16,
-      },
-    },
     [theme.breakpoints.down("xs")]: {
+      innerContainer: {
+        padding: 24,
+      },
       foot: {
         flexDirection: "column",
       },
@@ -225,7 +228,7 @@ const Footer = (props: any) => {
           <Grid item className={classes.footerOne}>
             <Grid container direction="column">
               <Grid item className={classes.footItem}>
-                <Grid container>
+                <Grid container wrap="nowrap">
                   <Grid item>
                     <img
                       className={classes.footIcon}
@@ -240,7 +243,7 @@ const Footer = (props: any) => {
                 </Grid>
               </Grid>
               <Grid item className={classes.footItem}>
-                <Grid container>
+                <Grid container wrap="nowrap">
                   <Grid item>
                     <img
                       className={classes.footIcon}
@@ -255,7 +258,7 @@ const Footer = (props: any) => {
                 </Grid>
               </Grid>
               <Grid item>
-                <Grid container>
+                <Grid container wrap="nowrap">
                   <Grid item>
                     <img
                       className={classes.footIcon}

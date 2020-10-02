@@ -4,11 +4,15 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     text: {
-      fontWeight: 300,
+      fontWeight: 400,
       display: "inline-block",
       fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
       fontSize: 18,
       lineHeight: "24px",
+      "& a": {
+        color: "inherit",
+        textDecoration: "inherit",
+      },
     },
     p1: {
       fontSize: 18,
@@ -34,13 +38,29 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "inline-block",
       fontWeight: 500,
       lineHeight: "52px",
+      "& a": {
+        color: "inherit",
+        textDecoration: "inherit",
+      },
     },
     h1: {
       fontSize: 48,
+      ["@media (max-width:960px)"]: {
+        fontSize: 40,
+        lineHeight: "40px",
+      },
+      ["@media (max-width:600px)"]: {
+        fontSize: 28,
+        lineHeight: "28px",
+      },
     },
     h2: {
       fontSize: 40,
       lineHeight: "40px",
+      ["@media (max-width:600px)"]: {
+        fontSize: 28,
+        lineHeight: "28px",
+      },
     },
     h3: {
       fontSize: 28,
@@ -62,13 +82,13 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "block",
     },
     normal: {
-      fontWeight: 300,
-    },
-    medium: {
       fontWeight: 400,
     },
-    bold: {
+    medium: {
       fontWeight: 500,
+    },
+    bold: {
+      fontWeight: 600,
     },
   })
 );

@@ -11,34 +11,74 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    container: {
-      backgroundColor: "#ffffff",
-    },
-    innerContainer: {
-      maxWidth: 1280,
-      margin: "0 auto",
-      width: "100%",
-      padding: "46px 0 64px",
-      boxSizing: "border-box",
-    },
-    tabs: {
-      marginTop: 40,
-      minHeight: 150,
-      fontSize: 16,
-      "& > span": {
-        color: "#27AE60",
+    [theme.breakpoints.between("lg", "xl")]: {
+      container: {
+        backgroundColor: "#ffffff",
+      },
+      innerContainer: {
+        maxWidth: 1280,
+        margin: "0 auto",
+        width: "100%",
+        padding: "46px 48px 64px",
+        boxSizing: "border-box",
+      },
+      tabs: {
+        marginTop: 40,
+        minHeight: 150,
+        fontSize: 16,
+        "& > span": {
+          color: "#27AE60",
+        },
+      },
+      tab: {
+        "& > div > div": {
+          borderBottom: "3px solid #B9B9B9",
+          overflowX: "scroll",
+          position: "relative",
+          "&::-webkit-scrollbar": {
+            width: 0,
+            background: "transparent",
+            height: 0,
+          },
+        },
       },
     },
-    tab: {
-      "& > div > div": {
-        borderBottom: "3px solid #B9B9B9",
-        overflowX: "scroll",
-        position: "relative",
-        "&::-webkit-scrollbar": {
-          width: 0,
-          background: "transparent",
-          height: 0,
+    [theme.breakpoints.down("md")]: {
+      container: {
+        backgroundColor: "#ffffff",
+      },
+      innerContainer: {
+        maxWidth: 1280,
+        margin: "0 auto",
+        width: "100%",
+        padding: "46px 48px 64px",
+        boxSizing: "border-box",
+      },
+      tabs: {
+        marginTop: 40,
+        minHeight: 150,
+        fontSize: 16,
+        "& > span": {
+          color: "#27AE60",
         },
+      },
+      tab: {
+        "& > div > div": {
+          borderBottom: "3px solid #B9B9B9",
+          overflowX: "scroll",
+          position: "relative",
+          "&::-webkit-scrollbar": {
+            width: 0,
+            background: "transparent",
+            height: 0,
+          },
+        },
+      },
+    },
+    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("xs")]: {
+      innerContainer: {
+        padding: 24,
       },
     },
   })
