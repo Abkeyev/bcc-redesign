@@ -146,6 +146,7 @@ const Featured = (props: any) => {
               btnText="Оформить карту"
               variant="vertical"
               img="ironcard.png"
+              fullImg
               chips={[
                 {
                   title: "Кредитная карта",
@@ -161,7 +162,7 @@ const Featured = (props: any) => {
                 >
                   <Grid item>
                     <BccTypography type="p2" weight="medium" block>
-                      до 10%
+                      до 4%
                     </BccTypography>
                     <BccTypography type="p3" block>
                       кэшбэка с покупок
@@ -169,10 +170,10 @@ const Featured = (props: any) => {
                   </Grid>
                   <Grid item>
                     <BccTypography type="p2" weight="medium" block>
-                      Бесплатно
+                      Стальная карта 17 гр.
                     </BccTypography>
                     <BccTypography type="p3" block>
-                      Выпуск и обслуживание
+                      О карте
                     </BccTypography>
                   </Grid>
                 </Grid>
@@ -181,9 +182,10 @@ const Featured = (props: any) => {
           </Grid>
           <Grid item>
             <BccCard
-              title="#IRonCard"
+              title="#TravelCard"
               btnText="Оформить карту"
               variant="vertical"
+              fullImg
               img="ironcard.png"
               chips={[
                 {
@@ -200,10 +202,10 @@ const Featured = (props: any) => {
                 >
                   <Grid item>
                     <BccTypography type="p2" weight="medium" block>
-                      до 10%
+                      7%
                     </BccTypography>
                     <BccTypography type="p3" block>
-                      кэшбэка с покупок
+                      Кэшбек авиа и ж/д
                     </BccTypography>
                   </Grid>
                   <Grid item>
