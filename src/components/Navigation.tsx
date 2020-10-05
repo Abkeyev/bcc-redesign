@@ -439,7 +439,7 @@ const Navigation = (props: any) => {
     },
   ]);
   const [index, setIndex] = React.useState(0);
-  const [menu, openMenu] = React.useState(true);
+  const [menu, openMenu] = React.useState(false);
   const [subMenuIndex, setSubMenuIndex] = React.useState(-1);
   const [subSubMenuIndex, setSubSubMenuIndex] = React.useState(-1);
   const [subSubSubMenuIndex, setSubSubSubMenuIndex] = React.useState(-1);
