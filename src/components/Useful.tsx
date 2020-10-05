@@ -422,12 +422,13 @@ const Useful = (props: any) => {
                 title="Онлайн переводы"
                 btnText="Перевести деньги"
                 variant="vertical"
-                img="useful1.png"
+                img="useful1.svg"
+                fullImg
                 chips={[
                   { title: "Переводы", type: "outlined", color: "secondary" },
                 ]}
                 text={
-                  <BccTypography type="p2" weight="medium" block>
+                  <BccTypography type="p2" color="#80868C" block>
                     Удобные и безопасные переводы с карты на карту
                   </BccTypography>
                 }
@@ -438,12 +439,13 @@ const Useful = (props: any) => {
                 title="CenterGarant"
                 btnText="Узнать больше"
                 variant="vertical"
-                img="useful2.png"
+                img="useful2.svg"
+                fullImg
                 chips={[
                   { title: "Гарантия", type: "outlined", color: "secondary" },
                 ]}
                 text={
-                  <BccTypography type="p2" weight="medium" block>
+                  <BccTypography type="p2" color="#80868C" block>
                     Новые гарантии от Банка ЦентрКредит
                   </BccTypography>
                 }
@@ -454,10 +456,11 @@ const Useful = (props: any) => {
                 title="Мобильный POS терминал"
                 btnText="Узнать больше"
                 variant="vertical"
-                img="ironcard.png"
-                chips={[{ title: "Акция", type: "outlined", color: "sale" }]}
+                img="useful3.svg"
+                fullImg
+                chips={[{ title: "Акция", type: "filled", color: "sale" }]}
                 text={
-                  <BccTypography type="p2" weight="medium" block>
+                  <BccTypography type="p2" color="#80868C" block>
                     Бизнес в кармане
                   </BccTypography>
                 }

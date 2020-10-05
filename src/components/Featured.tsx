@@ -20,9 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
         marginBottom: 32,
       },
       cardsText: {
-        "& > div": {
-          width: "calc(50% - 8px)",
-        },
+        "& > div": {},
       },
       cards: {
         marginBottom: 24,
@@ -146,10 +144,11 @@ const Featured = (props: any) => {
               btnText="Оформить карту"
               variant="vertical"
               img="ironcard.png"
+              url="https://www.bcc.kz/ironcard"
               fullImg
               chips={[
                 {
-                  title: "Кредитная карта",
+                  title: "Дебетовая карта",
                   type: "outlined",
                   color: "secondary",
                 },
@@ -165,7 +164,7 @@ const Featured = (props: any) => {
                       до 4%
                     </BccTypography>
                     <BccTypography type="p3" block>
-                      кэшбэка с покупок
+                      Кэшбэк с покупок
                     </BccTypography>
                   </Grid>
                   <Grid item>
@@ -186,7 +185,8 @@ const Featured = (props: any) => {
               btnText="Оформить карту"
               variant="vertical"
               fullImg
-              img="ironcard.png"
+              img="travelcard.png"
+              url="https://www.bcc.kz/travelcard/"
               chips={[
                 {
                   title: "Кредитная карта",
@@ -213,7 +213,7 @@ const Featured = (props: any) => {
                       Бесплатно
                     </BccTypography>
                     <BccTypography type="p3" block>
-                      Выпуск и обслуживание
+                      Выпуск, обслуживание
                     </BccTypography>
                   </Grid>
                 </Grid>
@@ -222,15 +222,22 @@ const Featured = (props: any) => {
           </Grid>
           <Grid item>
             <BccCard
-              title="#IRonCard"
+              title="#картакарта"
               btnText="Оформить карту"
               variant="vertical"
-              img="ironcard.png"
+              img="kartakarta.png"
+              url="https://www.bcc.kz/kartakarta/"
+              fullImg
               chips={[
                 {
                   title: "Кредитная карта",
                   type: "outlined",
                   color: "secondary",
+                },
+                {
+                  title: "Хит продаж",
+                  type: "filled",
+                  color: "sale",
                 },
               ]}
               text={
@@ -238,21 +245,30 @@ const Featured = (props: any) => {
                   container
                   justify="space-between"
                   className={classes.cardsText}
+                  wrap="nowrap"
                 >
                   <Grid item>
                     <BccTypography type="p2" weight="medium" block>
-                      до 10%
+                      до 3 000 000 ₸
                     </BccTypography>
                     <BccTypography type="p3" block>
-                      кэшбэка с покупок
+                      Кредитный лимит
                     </BccTypography>
                   </Grid>
                   <Grid item>
                     <BccTypography type="p2" weight="medium" block>
-                      Бесплатно
+                      до 30%
                     </BccTypography>
                     <BccTypography type="p3" block>
-                      Выпуск и обслуживание
+                      Кэшбек
+                    </BccTypography>
+                  </Grid>
+                  <Grid item>
+                    <BccTypography type="p2" weight="medium" block>
+                      до 12 мес.
+                    </BccTypography>
+                    <BccTypography type="p3" block>
+                      Рассрочка
                     </BccTypography>
                   </Grid>
                 </Grid>
@@ -272,11 +288,13 @@ const Featured = (props: any) => {
               btnText="Оставить заявку"
               variant="horizontal"
               img="autocredit.png"
+              link
+              url="/car-credit"
               chips={[
                 { title: "Кредит", type: "outlined", color: "secondary" },
               ]}
               text={
-                <BccTypography type="p2" weight="medium" block>
+                <BccTypography type="p2" color="#80868C" block>
                   на покупку нового авто со ставкой 4%
                 </BccTypography>
               }
@@ -284,16 +302,17 @@ const Featured = (props: any) => {
           </Grid>
           <Grid item>
             <BccCard
-              title="Автокредит"
-              btnText="Оставить заявку"
+              title="“Рахмет”"
+              btnText="Открыть депозит"
               variant="horizontal"
-              img="autocredit.png"
+              img="rahmet.png"
+              url="https://www.bcc.kz/product/rakhmet/"
               chips={[
-                { title: "Кредит", type: "outlined", color: "secondary" },
+                { title: "Депозит", type: "outlined", color: "secondary" },
               ]}
               text={
-                <BccTypography type="p2" weight="medium" block>
-                  на покупку нового авто со ставкой 4%
+                <BccTypography type="p2" color="#80868C" block>
+                  до 9,1% годовых
                 </BccTypography>
               }
             />

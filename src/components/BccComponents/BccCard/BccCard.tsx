@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { BccChip, BccTypography, BccButton } from "..";
+import { BccChip, BccTypography, BccButton, BccLink } from "..";
+import { Link, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -76,6 +77,10 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       cardBtn: {
         marginTop: "auto",
+        "& a": {
+          color: "inherit",
+          textDecoration: "inherit",
+        },
       },
       chipWrap: {
         display: "flex",
@@ -103,6 +108,8 @@ interface BccCardProps extends React.HTMLAttributes<HTMLDivElement> {
   btnText: string;
   variant: "horizontal" | "vertical";
   img?: string;
+  url?: string | "";
+  link?: boolean | false;
   fullImg?: boolean | false;
   chips?: Array<Chip>;
 }
@@ -116,6 +123,8 @@ const BccCard = (props: BccCardProps) => {
     bgColor,
     variant,
     img,
+    url,
+    link,
     fullImg,
     chips,
     children,
@@ -190,7 +199,19 @@ const BccCard = (props: BccCardProps) => {
           color="secondary"
           className={classes.cardBtn}
         >
-          {btnText}
+          {url === "" ? (
+            btnText
+          ) : link ? (
+            <Link to={url !== undefined ? `${url}` : ""}>{btnText}</Link>
+          ) : (
+            <BccLink
+              href={url}
+              target="_blank"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              {btnText}
+            </BccLink>
+          )}
         </BccButton>
       </div>
     </div>

@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     fSale: {
       color: "white",
-      backgroundColor: "#E3266A",
+      backgroundColor: "#27AE60",
     },
     oPrimary: {
       color: "#27AE60",
@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme: Theme) =>
       border: "1px solid #4D565F",
     },
     oSale: {
-      color: "#E3266A",
-      border: "1px solid #E3266A",
+      color: "#27AE60",
+      border: "1px solid #27AE60",
     },
   })
 );
