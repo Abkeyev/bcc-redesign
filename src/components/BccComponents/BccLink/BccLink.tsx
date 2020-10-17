@@ -4,11 +4,15 @@ import { withStyles } from "@material-ui/core/styles";
 const BccLink = withStyles({
   root: {
     fontSize: "inherit",
-    color: "#27AE60",
+    textDecoration: "inherit",
+    color: "inherit",
     cursor: "pointer",
     fontWeight: "normal",
     textTransform: "none",
     letterSpacing: 0,
+    "&:hover": {
+      textDecoration: "inherit",
+    },
   },
 })(Link);
 

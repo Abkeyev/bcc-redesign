@@ -18,13 +18,34 @@ const useStyles = makeStyles((theme: Theme) =>
       outerContainer: {
         boxShadow: "0px 2px 7px rgba(0, 0, 0, 0.08)",
         position: "relative",
+        zIndex: 999,
       },
       innerSubContainer: {
-        padding: "8px 0",
+        padding: "16px 0",
         transition: "all .25s ease",
         minHeight: 64,
         overflow: "hidden",
         height: 64,
+        position: "relative",
+      },
+      innerSubContainerContent: {
+        minHeight: 325,
+        position: "absolute",
+        transition: "all .25s ease",
+        backgroundColor: "white",
+        zIndex: 998,
+        width: "100%",
+        boxShadow: "0px 2px 7px rgba(0, 0, 0, 0.08)",
+        "& > div": {
+          maxWidth: 1280,
+          width: "70%",
+          margin: "0 auto",
+          boxSizing: "border-box",
+          padding: "32px 48px",
+          "& > div": {
+            width: "30%",
+          },
+        },
       },
       lastSub: {
         height: 80,
@@ -40,6 +61,7 @@ const useStyles = makeStyles((theme: Theme) =>
       container: {
         maxWidth: 1280,
         padding: "0 48px",
+        backgroundColor: "white",
         margin: "0 auto",
         boxSizing: "border-box",
       },
@@ -400,18 +422,11 @@ const useStyles = makeStyles((theme: Theme) =>
         marginLeft: 12,
         verticalAlign: "middle",
       },
-      creditCard: {
-        marginTop: 24,
-        marginBottom: 12,
-        "& > div": {
-          boxShadow: "none",
-          "& > div:last-child": {
-            padding: "20px 0",
-          },
-        },
-      },
     },
     [theme.breakpoints.down("xs")]: {},
+    creditCard: {
+      maxWidth: 180,
+    },
   })
 );
 
@@ -608,228 +623,192 @@ const Navigation = (props: any) => {
             </Grid>
           </div>
         </div>
-        <div
-          onMouseLeave={() => {
-            setSubMenuIndex(-1);
-            setSubSubMenuIndex(-1);
-            setSubSubSubMenuIndex(-1);
-          }}
-        >
-          <div
-            className={`${classes.innerSubContainer} ${
-              subMenuIndex === -1 ? classes.none : ""
-            }`}
-          >
-            <div className={classes.container}>
-              <Grid
-                container
-                justify="space-between"
-                wrap="nowrap"
-                alignItems="center"
-              >
-                <Grid item>
-                  <BccTabs
-                    onChange={(event: any, index: number) => {
-                      goToLink(index, true);
-                    }}
-                    className={classes.tab}
-                  >
-                    {nav[index] &&
-                      nav[index].inverseParentHeadNavigation &&
-                      nav[index].inverseParentHeadNavigation.length > 0 &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex] &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation.length > 0 &&
-                      nav[index].inverseParentHeadNavigation[
-                        subMenuIndex
-                      ].inverseParentHeadNavigation.map(
-                        (nip: any, iip: number) => {
-                          return (
-                            <BccTab
-                              label={
-                                !nip.isexternal ? (
-                                  <Link to={nip.link}>{nip.title}</Link>
+      </div>
+      <div
+        onMouseLeave={() => {
+          setSubMenuIndex(-1);
+          setSubSubMenuIndex(-1);
+          setSubSubSubMenuIndex(-1);
+        }}
+        className={`${classes.innerSubContainerContent} ${
+          subMenuIndex === -1 ? classes.none : ""
+        }`}
+      >
+        {nav &&
+        nav[index] &&
+        nav[index].inverseParentHeadNavigation &&
+        nav[index].inverseParentHeadNavigation.length > 0 &&
+        nav[index].inverseParentHeadNavigation[subMenuIndex] &&
+        nav[index].inverseParentHeadNavigation[subMenuIndex]
+          .inverseParentHeadNavigation &&
+        nav[index].inverseParentHeadNavigation[subMenuIndex]
+          .inverseParentHeadNavigation.length > 0 &&
+        nav[index].inverseParentHeadNavigation[subMenuIndex]
+          .inverseParentHeadNavigation[0].ismuted ? (
+          <Grid container wrap="nowrap" justify="space-between">
+            {nav[index].inverseParentHeadNavigation[
+              subMenuIndex
+            ].inverseParentHeadNavigation.map((nip: any, iip: number) => {
+              {
+                return (
+                  <Grid item container direction="column" wrap="nowrap">
+                    <Grid item>
+                      <BccTypography type="p2" weight="medium" mb="20px" block>
+                        {nip.title}
+                      </BccTypography>
+                      {nip.inverseParentHeadNavigation &&
+                        nip.inverseParentHeadNavigation.length > 0 &&
+                        nip.inverseParentHeadNavigation.map(
+                          (nipp: any, iip: number) => {
+                            return (
+                              <BccTypography
+                                color="#4D565F"
+                                type="p2"
+                                mb="20px"
+                                block
+                              >
+                                {!nipp.isexternal ? (
+                                  <Link to={nipp.link}>{nipp.title}</Link>
                                 ) : (
-                                  <BccLink target="_blank" href={nip.link}>
-                                    {nip.title}
+                                  <BccLink target="_blank" href={nipp.link}>
+                                    {nipp.title}
                                   </BccLink>
-                                )
-                              }
-                              onMouseEnter={() => {
-                                if (nip.isdropdown || nip.ismuted) {
-                                  setSubSubMenuIndex(iip);
-                                } else setSubSubMenuIndex(-1);
-                              }}
-                              value={iip}
-                            />
-                          );
-                        }
-                      )}
-                  </BccTabs>
-                </Grid>
-                <Grid item></Grid>
-              </Grid>
-            </div>
-          </div>
-          <div
-            className={`${classes.innerSubContainer} ${
-              subSubMenuIndex === -1 ? classes.none : classes.lastSub
-            }`}
-          >
-            <div className={classes.container}>
-              <Grid
-                container
-                justify="space-between"
-                wrap="nowrap"
-                alignItems="center"
-              >
-                <Grid item style={{ width: "100%" }}>
-                  <BccTabs
-                    onChange={(event: any, index: number) => {
-                      goToLink(index, true);
-                    }}
-                    className={classes.tab}
+                                )}
+                              </BccTypography>
+                            );
+                          }
+                        )}
+                    </Grid>
+                  </Grid>
+                );
+              }
+            })}
+            {nav[index].inverseParentHeadNavigation[0].title === "Карты" && (
+              <Grid item className={classes.creditCard}>
+                <img src={process.env.PUBLIC_URL + "/img/travel-card.png"} />
+                <BccTypography
+                  type="p2"
+                  mb="8px"
+                  mt="16px"
+                  weight="medium"
+                  block
+                >
+                  #Travelcard
+                </BccTypography>
+                <BccTypography type="p4" color="#4D565F" mb="4px" block>
+                  - 7% кэшбек за авиа и ж/д билеты
+                </BccTypography>
+                <BccTypography type="p4" color="#4D565F" mb="16px" block>
+                  - Преимущества Visa Signature
+                </BccTypography>
+                <BccButton variant="outlined" color="secondary">
+                  <BccLink
+                    href="https://www.bcc.kz/travelcard/"
+                    target="_blank"
                   >
-                    {nav[index] &&
-                      nav[index].inverseParentHeadNavigation &&
-                      nav[index].inverseParentHeadNavigation.length > 0 &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex] &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation.length > 0 &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation[subSubMenuIndex] &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation[subSubMenuIndex]
-                        .inverseParentHeadNavigation &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation[subSubMenuIndex]
-                        .inverseParentHeadNavigation.length > 0 &&
-                      nav[index].inverseParentHeadNavigation[
-                        subMenuIndex
-                      ].inverseParentHeadNavigation[
-                        subSubMenuIndex
-                      ].inverseParentHeadNavigation.map(
-                        (nip: any, iip: number) => {
-                          return (
-                            <BccTab
-                              label={
-                                !nip.isexternal ? (
-                                  <Link to={nip.link}>{nip.title}</Link>
-                                ) : (
-                                  <BccLink target="_blank" href={nip.link}>
-                                    {nip.title}
-                                  </BccLink>
-                                )
-                              }
-                              onMouseEnter={() => {
-                                if (nip.isdropdown || nip.ismuted) {
-                                  setSubSubSubMenuIndex(iip);
-                                } else setSubSubSubMenuIndex(-1);
-                              }}
-                              value={iip}
-                            />
-                          );
-                        }
-                      )}
-                  </BccTabs>
-                </Grid>
-                <Grid item></Grid>
+                    Узнать больше
+                  </BccLink>
+                </BccButton>
               </Grid>
-            </div>
-          </div>
-
-          <div
-            className={`${classes.innerSubContainer} ${
-              subSubSubMenuIndex === -1 ? classes.none : ""
-            }`}
-          >
-            <div className={classes.container}>
-              <Grid
-                container
-                justify="space-between"
-                wrap="nowrap"
-                alignItems="center"
-              >
-                <Grid item style={{ width: "100%" }}>
-                  <BccTabs
-                    onChange={(event: any, index: number) => {
-                      goToLink(index, true);
-                    }}
-                    className={classes.tab}
+            )}
+          </Grid>
+        ) : (
+          <Grid container justify="space-between" wrap="nowrap">
+            <Grid item container direction="column" wrap="nowrap">
+              {nav &&
+                nav[index] &&
+                nav[index].inverseParentHeadNavigation &&
+                nav[index].inverseParentHeadNavigation.length > 0 &&
+                nav[index].inverseParentHeadNavigation[subMenuIndex] &&
+                nav[index].inverseParentHeadNavigation[subMenuIndex]
+                  .inverseParentHeadNavigation &&
+                nav[index].inverseParentHeadNavigation[subMenuIndex]
+                  .inverseParentHeadNavigation.length > 0 &&
+                nav[index].inverseParentHeadNavigation[
+                  subMenuIndex
+                ].inverseParentHeadNavigation.map((nip: any, iip: number) => {
+                  return (
+                    <Grid item>
+                      <BccTypography color="#4D565F" type="p2" mb="20px" block>
+                        {!nip.isexternal ? (
+                          <Link to={nip.link}>{nip.title}</Link>
+                        ) : (
+                          <BccLink target="_blank" href={nip.link}>
+                            {nip.title}
+                          </BccLink>
+                        )}
+                      </BccTypography>
+                    </Grid>
+                  );
+                })}
+            </Grid>
+            <Grid item>
+              {nav &&
+              nav[index] &&
+              nav[index].inverseParentHeadNavigation &&
+              nav[index].inverseParentHeadNavigation.length > 0 &&
+              nav[index].inverseParentHeadNavigation[subMenuIndex] &&
+              nav[index].inverseParentHeadNavigation[subMenuIndex].title ===
+                "Кредиты" ? (
+                <Grid item className={classes.creditCard}>
+                  <img src={process.env.PUBLIC_URL + "/img/zalog.png"} />
+                  <BccTypography
+                    type="p2"
+                    mb="8px"
+                    mt="16px"
+                    weight="medium"
+                    block
                   >
-                    {nav[index] &&
-                      nav[index].inverseParentHeadNavigation &&
-                      nav[index].inverseParentHeadNavigation.length > 0 &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex] &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation.length > 0 &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation[subSubMenuIndex] &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation[subSubMenuIndex]
-                        .inverseParentHeadNavigation &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation[subSubMenuIndex]
-                        .inverseParentHeadNavigation.length > 0 &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation[subSubMenuIndex]
-                        .inverseParentHeadNavigation[subSubSubMenuIndex] &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation[subSubMenuIndex]
-                        .inverseParentHeadNavigation[subSubSubMenuIndex]
-                        .inverseParentHeadNavigation &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation[subSubMenuIndex]
-                        .inverseParentHeadNavigation[subSubSubMenuIndex]
-                        .inverseParentHeadNavigation.length > 0 &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation[subSubMenuIndex]
-                        .inverseParentHeadNavigation[subSubSubMenuIndex] &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation[subSubMenuIndex]
-                        .inverseParentHeadNavigation[subSubSubMenuIndex]
-                        .inverseParentHeadNavigation &&
-                      nav[index].inverseParentHeadNavigation[subMenuIndex]
-                        .inverseParentHeadNavigation[subSubMenuIndex]
-                        .inverseParentHeadNavigation[subSubSubMenuIndex]
-                        .inverseParentHeadNavigation.length > 0 &&
-                      nav[index].inverseParentHeadNavigation[
-                        subMenuIndex
-                      ].inverseParentHeadNavigation[
-                        subSubMenuIndex
-                      ].inverseParentHeadNavigation[
-                        subSubSubMenuIndex
-                      ].inverseParentHeadNavigation.map(
-                        (nip: any, iip: number) => {
-                          return (
-                            <BccTab
-                              label={
-                                !nip.isexternal ? (
-                                  <Link to={nip.link}>{nip.title}</Link>
-                                ) : (
-                                  <BccLink target="_blank" href={nip.link}>
-                                    {nip.title}
-                                  </BccLink>
-                                )
-                              }
-                              value={iip}
-                            />
-                          );
-                        }
-                      )}
-                  </BccTabs>
+                    Простой под залог
+                  </BccTypography>
+                  <BccTypography type="p4" color="#4D565F" mb="16px" block>
+                    Получите деньги под залог в тенге или долларах США
+                  </BccTypography>
+                  <BccButton variant="outlined" color="secondary">
+                    <BccLink
+                      href="https://www.bcc.kz/product/security-loan/"
+                      target="_blank"
+                    >
+                      Узнать больше
+                    </BccLink>
+                  </BccButton>
                 </Grid>
-                <Grid item></Grid>
-              </Grid>
-            </div>
-          </div>
-        </div>
+              ) : nav &&
+                nav[index] &&
+                nav[index].inverseParentHeadNavigation &&
+                nav[index].inverseParentHeadNavigation.length > 0 &&
+                nav[index].inverseParentHeadNavigation[subMenuIndex] &&
+                nav[index].inverseParentHeadNavigation[subMenuIndex].title ===
+                  "Ипотека" ? (
+                <Grid item className={classes.creditCard}>
+                  <img src={process.env.PUBLIC_URL + "/img/zalog2.png"} />
+                  <BccTypography
+                    type="p2"
+                    mb="8px"
+                    mt="16px"
+                    weight="medium"
+                    block
+                  >
+                    Простой под залог
+                  </BccTypography>
+                  <BccTypography type="p4" color="#4D565F" mb="16px" block>
+                    Получите деньги под залог в тенге или долларах США
+                  </BccTypography>
+                  <BccButton variant="outlined" color="secondary">
+                    <BccLink
+                      href="https://www.bcc.kz/product/security-loan/"
+                      target="_blank"
+                    >
+                      Узнать больше
+                    </BccLink>
+                  </BccButton>
+                </Grid>
+              ) : (
+                ""
+              )}
+            </Grid>
+          </Grid>
+        )}
       </div>
       <div className={`${classes.mobileContainer} ${menu ? classes.open : ""}`}>
         <div>
