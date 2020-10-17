@@ -36,7 +36,7 @@ const App = () => {
   }
   const ScrollToTop = withRouter(_ScrollToTop);
   return (
-    <Router basename="/">
+    <Router basename="/bcc-redesign">
       <ScrollToTop>
         <Navigation />
         <Switch>
